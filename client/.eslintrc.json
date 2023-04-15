@@ -23,6 +23,7 @@
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "react/jsx-props-no-spreading": [1, { "custom": "ignore" }]
+    "react/jsx-props-no-spreading": [1, { "custom": "ignore" }],
+    "react/function-component-definition": [2, { "namedcomponents": "arrow-function" }]
   }
 }
