@@ -1,5 +1,4 @@
 import React from 'react';
-import { ReactComponent as StackoverFlowSVG } from '../../assets/img/stackoverflow-color.svg';
 import ListItem from './ListItem';
 import CopyRight from './CopyRight';
 import Logo from './Logo';
@@ -42,6 +41,7 @@ export default function Footer() {
       'Data',
     ],
   };
+
   return (
     <div className="flex justify-center items-center h-[320px] w-screen bg-footer-bg text-footer-text">
       <div className="flex max-w-[1240px] w-full px-3 pt-8 pb-3">

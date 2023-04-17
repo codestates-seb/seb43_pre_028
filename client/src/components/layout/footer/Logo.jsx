@@ -1,4 +1,4 @@
-import { ReactComponent as StackoverFlowLogo } from '../../assets/img/stackoverflow-color.svg';
+import { ReactComponent as StackoverFlowLogo } from '../../../assets/img/stackoverflow-color.svg';
 
 function Logo() {
   return (
