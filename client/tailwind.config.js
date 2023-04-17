@@ -6,6 +6,18 @@ module.exports = {
       colors: {
         'footer-bg': '#232629',
         'footer-text': '#9199A1',
+        'nav-color': '#525960',
+        'nav-hover-text': '#232629',
+        'nav-hover-bg': '#e3e6e8',
+      },
+      backgroundImage: {
+        sprites: 'url(./assets/img/sprites.svg)',
+      },
+      backgroundPosition: {
+        logo: 'left top -500px',
+      },
+      boxShadow: {
+        'search-focuse': '#dae7f3 0px 5px 15px',
       },
     },
   },
