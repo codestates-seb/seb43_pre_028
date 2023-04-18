@@ -1,14 +1,22 @@
 package server.server.answer.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import preproject.answer.entity.Answer;
-import preproject.answer.exception.BusinessLogicException;
-import preproject.answer.exception.ExceptionCode;
-import preproject.answer.repository.AnswerRepository;
+import server.server.answer.entity.Answer;
+import server.server.answer.exception.BusinessLogicException;
+import server.server.answer.exception.ExceptionCode;
+import server.server.answer.repository.AnswerRepository;
 
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Transactional
+@Component
 @Service
 public class AnswerService {
     private AnswerRepository answerRepository;
@@ -26,6 +34,9 @@ public class AnswerService {
 
         Optional.ofNullable(answer.getContent())
                 .ifPresent(findAnswer::setContent);
+
+        findAnswer.setModifiedAt(LocalDateTime.now());
+
         return answerRepository.save(findAnswer);
     }
 
@@ -34,9 +45,9 @@ public class AnswerService {
         return findVerifiedAnswer(answerId);
     }
 
-    public List<Answer> findAnswers() {  // 모든 회원 조회
-
-        return (List<Answer>) answerRepository.findAll();
+    public Page<Answer> findAnswers(int page, int size) {  // 모든 회원 조회
+        return answerRepository.findAll(PageRequest.of(page, size,
+                Sort.by("answerId").descending()));
     }
 
     public void deleteAnswer(long answerId) {  // 특정 회원 삭제
