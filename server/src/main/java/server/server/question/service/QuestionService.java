@@ -23,6 +23,7 @@ public class QuestionService {
     //질문 생성
     public Question creteQuestion(Question question){
 
+
         return questionRepository.save(question);
     }
 

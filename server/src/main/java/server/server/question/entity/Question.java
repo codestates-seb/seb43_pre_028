@@ -32,7 +32,7 @@ public class Question {
     @Column(nullable = false)
     private int views;
     private int vote;
-    //멤버
+    //멤버//
 
     //답변
 }

@@ -44,7 +44,6 @@ public class QuestionController {
         URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, response.getQuestionId());
 
         return ResponseEntity.created(location).build();
-
     }
 
     //질문 수정

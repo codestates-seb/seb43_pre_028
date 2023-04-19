@@ -16,7 +16,7 @@ public class QuestionDto {
         private String contentProblem;
         @NotBlank(message = "내용을 입력해주세요.")
         private String contentTried;
-//        //멤버아이디
+//        멤버아이디
     }
 
     @Getter
