@@ -1,6 +1,6 @@
 import React from 'react';
 import { FacebookIcon, GithubIcon, GoogleIcon } from './Icons';
-import ButtonCard from '../../components/ui/ButtonCard';
+import ButtonCard from '../ui/ButtonCard';
 
 // * : OAuth 로그인/회원가입 버튼 묶음
 // * : where : "log in" / "sign up"

@@ -1,6 +1,6 @@
 import React from 'react';
-import UserLabel from '../../components/ui/UserLabel';
-import ButtonCard from '../../components/ui/ButtonCard';
+import UserLabel from '../ui/UserLabel';
+import ButtonCard from '../ui/ButtonCard';
 
 function LoginForm() {
   return (
