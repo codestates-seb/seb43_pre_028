@@ -11,6 +11,10 @@ function SignUp() {
     <div className="flex justify-center items-center h-screen w-full bg-gray-100">
       <LeftContents />
       <div className="flex flex-col justify-center items-center">
+        <h1 className="text-xl text-center mb-8 md:hidden">
+          Create your Stack Overflow account. It’s free <br />
+          and only takes a minute.
+        </h1>
         <OAuthPart where="Sign up" />
         <SignUpForm />
         <p className="font-light text-xs my-1 mt-4">

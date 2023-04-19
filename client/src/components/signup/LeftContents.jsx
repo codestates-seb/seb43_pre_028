@@ -3,7 +3,7 @@ import { QuestionIcon, RequtationIcon, SaveIcon, VoteIcon } from './Icons';
 
 function LeftContents() {
   return (
-    <div className="mr-10">
+    <div className="hidden mr-10 md:block">
       <h1 className="text-2xl">Join the Stack Overflow community</h1>
       <div className="font-light">
         <p className="flex text-[0.9rem] my-4 items-center">
