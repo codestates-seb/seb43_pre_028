@@ -1,4 +1,4 @@
-package com.codestates.server.question.dto;
+package server.server.question.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,8 +16,6 @@ public class QuestionDto {
         private String contentProblem;
         @NotBlank(message = "내용을 입력해주세요.")
         private String contentTried;
-//        @NotBlank
-//        private String createdAt;
 //        //멤버아이디
     }
 
@@ -41,7 +39,5 @@ public class QuestionDto {
         private LocalDateTime modifiedAt;
         private int views;
         private int vote;
-
-
     }
 }

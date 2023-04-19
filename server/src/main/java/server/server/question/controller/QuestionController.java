@@ -1,4 +1,4 @@
-package com.codestates.server.question.controller;
+package server.server.question.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -69,8 +69,8 @@ public class QuestionController {
 
     //질문 전체 조회
     @GetMapping
-    public ResponseEntity getQuestions(@Positive @RequestParam int page,
-                                       @Positive @RequestParam int size) {
+    public ResponseEntity getQuestions(@Positive @RequestParam(value = "page", defaultValue = "1") int page,
+                                       @Positive @RequestParam(value = "size", defaultValue = "5") int size) {
         Page<Question> pageQuestions= questionService.findQuestions(page-1, size);
         List<Question> questions = pageQuestions.getContent();
 

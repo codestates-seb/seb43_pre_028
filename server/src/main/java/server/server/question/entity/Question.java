@@ -1,4 +1,4 @@
-package com.codestates.server.question.entity;
+package server.server.question.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

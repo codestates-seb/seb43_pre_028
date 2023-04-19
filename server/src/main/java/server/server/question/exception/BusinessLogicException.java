@@ -1,4 +1,4 @@
-package com.codestates.server.question.exception;
+package server.server.question.exception;
 
 import lombok.Getter;
 

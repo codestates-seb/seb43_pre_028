@@ -1,4 +1,4 @@
-package com.codestates.server.question.service;
+package server.server.question.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,4 +1,4 @@
-package com.codestates.server.question.repository;
+package server.server.question.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import server.server.question.entity.Question;

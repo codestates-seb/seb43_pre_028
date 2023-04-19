@@ -1,11 +1,13 @@
-package com.codestates.server.question.mapper;
+package server.server.question.mapper;
 
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
 
 import java.util.List;
 
+@Component
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
     Question questionPostToQuestion(QuestionDto.Post postQuestion);
