@@ -48,7 +48,7 @@ public class QuestionController {
     }
 
     //질문 수정
-    @PatchMapping("/{questionId}")
+    @PatchMapping("/{question-id}")
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive long questionId,
                                         @Valid @RequestBody QuestionDto.Patch patchQuestion){
 
@@ -60,7 +60,7 @@ public class QuestionController {
     }
 
     // 질문 조회(한 개만 선택)
-    @GetMapping("/{questionId}")
+    @GetMapping("/{question-id}")
     public ResponseEntity getQuestion(@PathVariable("question-id") @Positive long questionId){
         Question question = questionService.findQuestion(questionId);
 
@@ -71,15 +71,15 @@ public class QuestionController {
     @GetMapping
     public ResponseEntity getQuestions(@Positive @RequestParam int page,
                                        @Positive @RequestParam int size) {
-        Page<Question> pageQuestions= questionService.findQuestions(page -1, size);
+        Page<Question> pageQuestions= questionService.findQuestions(page-1, size);
         List<Question> questions = pageQuestions.getContent();
 
         return new ResponseEntity<>(new MultiResponseDto<>(mapper.questionToQuestionResponse(questions), pageQuestions), HttpStatus.OK);
     }
 
     //질문 삭제
-    @DeleteMapping("/{questionId}")
-    public ResponseEntity deleteQuestion(@PathVariable("question_id") @Positive long questionId){
+    @DeleteMapping("/{question-id}")
+    public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive long questionId){
         questionService.deleteQuestion(questionId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

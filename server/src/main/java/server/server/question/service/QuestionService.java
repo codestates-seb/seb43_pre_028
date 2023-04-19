@@ -9,6 +9,7 @@ import server.server.question.exception.BusinessLogicException;
 import server.server.question.exception.ExceptionCode;
 import server.server.question.repository.QuestionRepository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -39,10 +40,7 @@ public class QuestionService {
         //질문 문제 해결 수정
         Optional.ofNullable(question.getContentTried())
                 .ifPresent(content -> findQuestion.setContentTried(content));
-        //수정 시간 등록
-        Optional.ofNullable(question.getModifiedAt())
-                .ifPresent(modifiedAt -> findQuestion.setModifiedAt(modifiedAt));
-
+        findQuestion.setModifiedAt(LocalDateTime.now());
         return questionRepository.save(findQuestion);
     }
 
@@ -54,7 +52,7 @@ public class QuestionService {
     //질문 조회(전채)
     public Page<Question> findQuestions(int page, int size){
         return questionRepository.findAll(PageRequest.of(page, size,
-                Sort.by("questionid").descending()));
+                Sort.by("questionId").descending()));
 
     }
 

@@ -25,10 +25,10 @@ public class Question {
     private String contentTried;
     @CreatedDate
     @Column
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_AT")
-    private LocalDateTime modifiedAt ;
+    private LocalDateTime modifiedAt = LocalDateTime.now() ;
     @Column(nullable = false)
     private int views;
     private int vote;

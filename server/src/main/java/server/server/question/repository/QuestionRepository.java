@@ -6,6 +6,5 @@ import server.server.question.entity.Question;
 import java.util.Optional;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    @Override
-    Optional<Question> findById(Long questionId);
+    Optional<Question> findByTitle(String title);
 }
