@@ -52,35 +52,24 @@ public class AnswerController {
                                       @Valid @RequestBody AnswerDto.patchAnswer patchAnswer) {
         patchAnswer.setAnswerId(answerId);
 
-        Answer response = answerService.updateAnswer(answerMapper.answerPatchToAnswer(patchAnswer));
+        Answer answer = answerMapper.answerPatchToAnswer(patchAnswer);
+        Answer updated = answerService.updateAnswer(answer);
+        AnswerDto.responseAnswer response = answerMapper.answerToResponseAnswer(updated);
 
-        return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToResponseAnswer(response)), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
-    // TODO 500 Internal Server Error
-    @GetMapping(value = "/{answer-id}", produces = "application/json")  // 특정 아이디 조회
-    public ResponseEntity getAnswer(@PathVariable("answer-id") @Positive long answerId) {
-        Answer response = answerService.findAnswer(answerId);
+    // 200 OK
+    @GetMapping(produces = "application/json") // 모든 답변 조회
+    public ResponseEntity getAnswers() {
+        List<AnswerDto.responseAnswer> response = answerMapper.answersToResponseAnswers(answerService.findAnswers());
 
-        return new ResponseEntity<>(answerMapper.answerToResponseAnswer(response), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(response),  HttpStatus.OK);
     }
 
-    // TODO 400 Bad Request
-    @GetMapping (produces = "application/json") // 모든 아이디 조회
-    public ResponseEntity getAnswers(@Positive @RequestParam int page,
-                                     @Positive @RequestParam int size) {
-        Page<Answer> pageAnswers = answerService.findAnswers(page - 1, size);
-        List<Answer> answers = pageAnswers.getContent();
-
-        return new ResponseEntity<>(
-                new MultiResponseDto<>(answerMapper.answersToResponseAnswers(answers),
-                        pageAnswers),
-                HttpStatus.OK);
-    }
-
-    // TODO 500 Internal Server Error
+    // 204 No Content
     @DeleteMapping(value = "/{answer-id}")  // 삭제
-    public ResponseEntity deleteTodo(@PathVariable("answer-id") @Positive long answerId) {
+    public ResponseEntity deleteAnswer(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -13,6 +13,7 @@ import server.server.answer.repository.AnswerRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -40,20 +41,12 @@ public class AnswerService {
         return answerRepository.save(findAnswer);
     }
 
-    public Answer findAnswer(long answerId) {  // 특정 회원 조회
-
-        return findVerifiedAnswer(answerId);
-    }
-
-    public Page<Answer> findAnswers(int page, int size) {  // 모든 회원 조회
-        return answerRepository.findAll(PageRequest.of(page, size,
-                Sort.by("answerId").descending()));
+    public List<Answer> findAnswers() {  // 모든 회원 조회
+        return answerRepository.findAll();
     }
 
     public void deleteAnswer(long answerId) {  // 특정 회원 삭제
-        Answer findAnswer = findVerifiedAnswer(answerId);
-
-        answerRepository.delete(findAnswer);
+        answerRepository.deleteById(answerId);
     }
 
     public Answer findVerifiedAnswer(long answerId) {  // 해당 답변글의 존재 유무 체크
