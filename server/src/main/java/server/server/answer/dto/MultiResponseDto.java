@@ -1,4 +1,4 @@
-package server.server.dto;
+package server.server.answer.dto;
 
 import lombok.Getter;
 import org.springframework.data.domain.Page;
