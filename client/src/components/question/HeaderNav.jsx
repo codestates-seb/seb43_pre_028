@@ -1,5 +1,4 @@
-import { ReactComponent as FilterIcon } from '../../assets/img/icon-filter.svg';
-import { ReactComponent as Down } from '../../assets/img/down.svg';
+import { DownIcon, FilterIcon } from '../Icons';
 
 function HeaderNav() {
   return (
@@ -35,7 +34,7 @@ function HeaderNav() {
             type="button"
             className="flex items-center px-[12px] py-2 border-solid border-[1px] border-nav-color border-l-0 rounded-r-[4px]"
           >
-            More <Down className="fill-black h-2 w-2 ml-1" />
+            More <DownIcon className="fill-black h-2 w-2 ml-1" />
           </button>
         </nav>
         <button

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LinkIcon } from './Icons';
+import { SignUpLinkIcon } from '../Icons';
 import OAuthPart from '../login/OAuthPart';
 import LeftContents from './LeftContents';
 import SignUpForm from './SignUpForm';
@@ -33,7 +33,7 @@ function SignUp() {
             className="flex items-end font-thin text-xs text-sky-800 ml-1 hover:text-sky-600 fill-sky-800 hover:fill-sky-600"
           >
             Sign up on Talent
-            <LinkIcon />
+            <SignUpLinkIcon className="ml-1" />
           </a>
         </p>
       </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import dummy from '../data/dummy';
-import { ReactComponent as VoteUp } from '../assets/img/voteUp.svg';
-import { ReactComponent as VoteDown } from '../assets/img/voteDown.svg';
+import { VoteUpIcon, VoteDownIcon } from './Icons';
 
 function Title() {
   return <div className="text-2xl">{dummy[0].title}</div>;
@@ -43,9 +42,9 @@ export default function QuestionDetail() {
       <Date />
       <div className="flex mt-4">
         <div className="mr-4 flex-shrink-0">
-          <VoteUp />
+          <VoteUpIcon />
           <Voting />
-          <VoteDown />
+          <VoteDownIcon />
         </div>
         <div>
           <Content />
@@ -57,9 +56,9 @@ export default function QuestionDetail() {
       </div>
       <div className="flex mt-4">
         <div className="mr-4 flex-shrink-0">
-          <VoteUp />
+          <VoteUpIcon />
           <Voting />
-          <VoteDown />
+          <VoteDownIcon />
         </div>
         <Content />
       </div>

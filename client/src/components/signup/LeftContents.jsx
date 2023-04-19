@@ -1,5 +1,6 @@
-import React from 'react';
-import { QuestionIcon, RequtationIcon, SaveIcon, VoteIcon } from './Icons';
+// import { QuestionIcon, RequtationIcon, SaveIcon, VoteIcon } from './Icons';
+
+import { QuestionIcon, RequtationIcon, SaveIcon, VoteIcon } from '../Icons';
 
 function LeftContents() {
   return (
@@ -7,15 +8,15 @@ function LeftContents() {
       <h1 className="text-2xl">Join the Stack Overflow community</h1>
       <div className="font-light">
         <p className="flex text-[0.9rem] my-4 items-center">
-          <QuestionIcon />
+          <QuestionIcon className="fill-[#1e95ff]" />
           <span className="ml-2">Get unstuck — ask a question</span>
         </p>
         <p className="flex text-[0.9rem] my-4 items-center">
-          <VoteIcon />
+          <VoteIcon className="fill-[#1e95ff]" />
           <span className="ml-2">Unlock new privileges like voting and commenting</span>
         </p>
         <p className="flex text-[0.9rem] my-4 items-center">
-          <SaveIcon />
+          <SaveIcon className="fill-[#1e95ff]" />
           <span className="ml-2">
             Save your favorite questions, answers, watch tags, and
             <br />
@@ -23,7 +24,7 @@ function LeftContents() {
           </span>
         </p>
         <p className="flex text-[0.9rem] my-4 items-center">
-          <RequtationIcon />
+          <RequtationIcon className="fill-[#1e95ff]" />
           <span className="ml-2">Earn reputation and badges</span>
         </p>
         <div className="text-xs">
