@@ -1,12 +1,12 @@
 import React from 'react';
-import { ReactComponent as QuestionBg } from '../assets/img/questionCreateBg.svg';
+import { QuestionBGImg } from '../components/Icons';
 
 function AskQuestionPage() {
   return (
     <div className="flex w-full flex-col p-10 mt-6 ">
       <div className="flex justify-between items-center mb-7 ">
         <h1 className="text-4xl font-semiold">Ask a public question</h1>
-        <QuestionBg />
+        <QuestionBGImg />
       </div>
 
       <div className="bg-[#EBF4FB] border-solid border-2 border-[#1e95ff] mb-5 rounded-md p-6 max-w-7xl">
