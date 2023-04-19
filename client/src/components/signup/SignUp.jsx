@@ -2,47 +2,15 @@ import React from 'react';
 
 import ButtonCard from '../ui/ButtonCard';
 import UserInput from '../ui/UserLabel';
-import { LinkIcon, QuestionIcon, RequtationIcon, SaveIcon, VoteIcon } from './Icons';
+import { LinkIcon } from './Icons';
 import OAuthPart from '../login/OAuthPart';
+import LeftContents from './LeftContents';
 
 // TODO : 글자크기 제안하기
 function SignUp() {
   return (
     <div className="flex justify-center items-center h-screen w-full bg-gray-100">
-      <div className="mr-10">
-        <h1 className="text-2xl">Join the Stack Overflow community</h1>
-        <div className="font-light">
-          <p className="flex text-s my-4">
-            <QuestionIcon />
-            <span className="ml-2">Get unstuck — ask a question</span>
-          </p>
-          <p className="flex text-s my-4">
-            <VoteIcon />
-            <span className="ml-2">Unlock new privileges like voting and commenting</span>
-          </p>
-          <p className="flex text-s my-4">
-            <SaveIcon />
-            <span className="ml-2">
-              Save your favorite questions, answers, watch tags, and
-              <br />
-              more
-            </span>
-          </p>
-          <p className="flex text-s my-4">
-            <RequtationIcon />
-            <span className="ml-2">Earn reputation and badges</span>
-          </p>
-          <div className="text-xs">
-            <p>Collaborate and share knowledge with a private group for FREE.</p>
-            <p>
-              <a href="http://#" className="text-sky-800 hover:text-sky-600">
-                Get Stack Overflow for Teams free for up to 50 users
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+      <LeftContents />
       <div className="flex flex-col justify-center items-center">
         <OAuthPart where="Sign up" />
         <form className="flex flex-col h-auto border-solid w-72 border-slate-300 bg-white rounded my-4 p-5 justify-between shadow-xl">
