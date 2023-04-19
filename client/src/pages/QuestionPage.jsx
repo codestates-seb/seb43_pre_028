@@ -24,3 +24,8 @@ function QuestionPage() {
 }
 
 export default QuestionPage;
+
+// 지현 회원정보수정페이지 구현
+// 승주님은 템플릿에 맞게끔 flex로 짜기
+// 혜미님 component 쪼개고 작명신경쓰고 stack editor 추가
+// 나: router-dom, page template만들기, line-clamp plugin, icons 공통적, 공통적속성빼기

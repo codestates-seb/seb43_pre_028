@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from './ListItem';
 import CopyRight from './CopyRight';
-import Logo from './Logo';
+import { StackoverFlowIcon } from '../../Icons';
 
 export default function Footer() {
   const stackoverflow = {
@@ -45,7 +45,10 @@ export default function Footer() {
   return (
     <div className="flex justify-center items-center h-[320px] w-screen bg-footer-bg text-footer-text">
       <div className="flex max-w-[1240px] w-full px-3 pt-8 pb-3">
-        <Logo />
+        <div className="pr-8">
+          <StackoverFlowIcon />
+        </div>
+
         <nav className="flex w-3/4">
           <ListItem type="stackoverflow" {...stackoverflow} />
           <ListItem type="product" {...product} />

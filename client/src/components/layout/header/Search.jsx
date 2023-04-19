@@ -1,4 +1,4 @@
-import { SearchIcon } from './Logo';
+import { SearchIcon } from '../../Icons';
 
 function Search() {
   return (

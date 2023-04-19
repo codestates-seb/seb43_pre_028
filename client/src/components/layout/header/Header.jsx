@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StackoverFlowLogo } from './Logo';
+import { StackoverFlowLogo } from '../../Icons';
 
 import Nav from './Nav';
 import Search from './Search';
