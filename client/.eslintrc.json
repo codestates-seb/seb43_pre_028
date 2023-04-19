@@ -24,6 +24,7 @@
     "no-unused-vars": "warn",
     "no-console": "warn",
     "react/jsx-props-no-spreading": [1, { "custom": "ignore" }],
-    "react/function-component-definition": [2, { "namedcomponents": "arrow-function" }]
+    "react/function-component-definition": [2, { "namedcomponents": "arrow-function" }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
 }

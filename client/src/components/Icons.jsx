@@ -9,6 +9,7 @@ import { ReactComponent as Hamburger } from '../assets/img/hamburger.svg';
 import { ReactComponent as Info } from '../assets/img/info.svg';
 import { ReactComponent as Pencil } from '../assets/img/pencil.svg';
 import { ReactComponent as Question } from '../assets/img/question.svg';
+import { ReactComponent as QuestionBg } from '../assets/img/question-create-bg.svg';
 import { ReactComponent as Requtation } from '../assets/img/requtation.svg';
 import { ReactComponent as Save } from '../assets/img/save.svg';
 import { ReactComponent as Search } from '../assets/img/search.svg';
@@ -72,6 +73,10 @@ export function PencilIcon({ className }) {
 
 export function QuestionIcon({ className }) {
   return <Question {...validateClassName(className)} />;
+}
+
+export function QuestionBGImg({ className }) {
+  return <QuestionBg {...validateClassName(className)} />;
 }
 
 export function RequtationIcon({ className }) {
