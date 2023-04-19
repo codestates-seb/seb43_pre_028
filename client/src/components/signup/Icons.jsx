@@ -5,16 +5,16 @@ import { ReactComponent as Requtation } from '../../assets/img/requtationIcon.sv
 import { ReactComponent as LinkSvg } from '../../assets/img/linkIcon.svg';
 
 function QuestionIcon() {
-  return <Question className="fill-blue-500" />;
+  return <Question className="fill-[#1e95ff]" />;
 }
 function VoteIcon() {
-  return <Vote className="fill-blue-500" />;
+  return <Vote className="fill-[#1e95ff]" />;
 }
 function SaveIcon() {
-  return <Save className="fill-blue-500" />;
+  return <Save className="fill-[#1e95ff]" />;
 }
 function RequtationIcon() {
-  return <Requtation className="fill-blue-500" />;
+  return <Requtation className="fill-[#1e95ff]" />;
 }
 function LinkIcon() {
   return <LinkSvg className="ml-1" />;
