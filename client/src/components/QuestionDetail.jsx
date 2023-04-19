@@ -33,9 +33,9 @@ function Days() {
 function Voting({ data }) {
   return (
     <div className="flex flex-col mt-2 items-center">
-      <VoteUp />
+      <VoteUpIcon />
       {data.votes}
-      <VoteDown />
+      <VoteDownIcon />
     </div>
   );
 }
@@ -95,7 +95,7 @@ function User({ data }) {
 // 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
 export default function QuestionDetail() {
   return (
-    <section className="w-[800px] p-6 shadow-lg">
+    <section className="flex w-full flex-col p-6 shadow-lg">
       <div className="flex w-full justify-between">
         <Title />
         <button

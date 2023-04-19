@@ -13,8 +13,8 @@ function QuestionPage() {
       <div className="flex w-full max-w-[1265px] mt-[50px] mx-auto">
         <Nav />
         <Main>
-          <Question />
-          {/* <QuestionDetail /> */}
+          {/* <Question /> */}
+          <QuestionDetail />
           <Aside />
         </Main>
       </div>
