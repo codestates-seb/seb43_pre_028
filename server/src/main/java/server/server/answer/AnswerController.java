@@ -1,4 +1,4 @@
-package server.server.answer.controller;
+package server.server.answer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
