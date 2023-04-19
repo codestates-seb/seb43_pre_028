@@ -93,10 +93,16 @@ video {
   vertical-align: baseline;
 }
 
-body {
-  font-family: 'Noto Sans', sans-serif;
-}
-
 * {
   box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
+    'Liberation Sans', sans-serif;
 }

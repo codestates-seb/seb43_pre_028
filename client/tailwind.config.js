@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -14,7 +15,7 @@ module.exports = {
         sprites: 'url(./assets/img/sprites.svg)',
       },
       backgroundPosition: {
-        logo: 'left top -500px',
+        logo: 'left top -498px',
       },
       boxShadow: {
         'search-focuse': '#dae7f3 0px 5px 15px',
