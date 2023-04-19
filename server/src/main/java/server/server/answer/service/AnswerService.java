@@ -58,7 +58,7 @@ public class AnswerService {
 
     public Answer findVerifiedAnswer(long answerId) {  // 해당 답변글의 존재 유무 체크
         Optional<Answer> optionalAnswer =
-                answerRepository.findByAnswer(String.valueOf(answerId));
+                answerRepository.findByContent(String.valueOf(answerId));
         Answer findAnswer =
                 optionalAnswer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
 

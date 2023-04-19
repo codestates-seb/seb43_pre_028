@@ -22,6 +22,5 @@ public class AnswerDto {
     public static class responseAnswer {
         private long answerId;
         private String content;
-
     }
 }
