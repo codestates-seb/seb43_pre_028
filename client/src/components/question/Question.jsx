@@ -1,6 +1,5 @@
 import Header from './Header';
 import Content from './Content';
-import Aside from './Aside';
 
 function Question() {
   return (

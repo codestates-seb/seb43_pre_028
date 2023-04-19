@@ -1,4 +1,4 @@
-import { EarthIcon, InfoIcon, StarIcon } from './Icons';
+import { EarthIcon, InfoIcon, StarIcon } from '../../Icons';
 
 function NavPageLinks() {
   return (
@@ -13,10 +13,10 @@ function NavPageLinks() {
       <div className="p-2 pl-[30px]">Companies</div>
       <div className="flex justify-between mt-4 ml-2 pr-2 font-normal">
         COLLECTIVES
-        <InfoIcon />
+        <InfoIcon className="fill-slate-400 hover:fill-slate-800" />
       </div>
       <div className="flex justify-start p-2 pr-4 font-normal">
-        <StarIcon />
+        <StarIcon className="fill-[#F48225]" />
         <span className="flex items-center ml-1">Explore Collectives</span>
       </div>
     </div>
