@@ -20,6 +20,11 @@ import { ReactComponent as StackoverFlow } from '../assets/img/stackoverflow-col
 import { ReactComponent as Vote } from '../assets/img/vote.svg';
 import { ReactComponent as VoteDown } from '../assets/img/vote-down.svg';
 import { ReactComponent as VoteUp } from '../assets/img/vote-up.svg';
+import { ReactComponent as Birth } from '../assets/img/birthIcon.svg';
+import { ReactComponent as Clock } from '../assets/img/clockIcon.svg';
+import { ReactComponent as Calendar } from '../assets/img/calendarIcon.svg';
+import { ReactComponent as Edit } from '../assets/img/editIcon.svg';
+import { ReactComponent as Network } from '../assets/img/networkIcon.svg';
 
 // * className 유효성 검사
 const validateClassName = className => {
@@ -125,6 +130,22 @@ export function VoteDownIcon({ className }) {
 
 export function VoteUpIcon({ className }) {
   return <VoteUp {...validateClassName(className)} />;
+}
+
+export function BirthIcon({ className }) {
+  return <Birth {...validateClassName(className)} />;
+}
+export function ClockIcon({ className }) {
+  return <Clock {...validateClassName(className)} />;
+}
+export function CalendarIcon({ className }) {
+  return <Calendar {...validateClassName(className)} />;
+}
+export function EditIcon({ className }) {
+  return <Edit {...validateClassName(className)} />;
+}
+export function NetworkIcon({ className }) {
+  return <Network {...validateClassName(className)} />;
 }
 
 export default {};
