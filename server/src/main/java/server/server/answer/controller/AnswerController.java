@@ -34,6 +34,7 @@ public class AnswerController {
         this.answerMapper = answerMapper;
     }
 
+    // 201 create
     @PostMapping  // 생성
     public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto.postAnswer postAnswer) {
         Answer answer = answerMapper.answerPostToAnswer(postAnswer);
@@ -45,6 +46,7 @@ public class AnswerController {
         return ResponseEntity.created(location).build();
     }
 
+    // TODO 500 Internal Server Error
     @PatchMapping(value = "/{answer-id}", produces = "application/json")  // 수정
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
                                       @Valid @RequestBody AnswerDto.patchAnswer patchAnswer) {
@@ -55,6 +57,7 @@ public class AnswerController {
         return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToResponseAnswer(response)), HttpStatus.OK);
     }
 
+    // TODO 500 Internal Server Error
     @GetMapping(value = "/{answer-id}", produces = "application/json")  // 특정 아이디 조회
     public ResponseEntity getAnswer(@PathVariable("answer-id") @Positive long answerId) {
         Answer response = answerService.findAnswer(answerId);
@@ -62,6 +65,7 @@ public class AnswerController {
         return new ResponseEntity<>(answerMapper.answerToResponseAnswer(response), HttpStatus.OK);
     }
 
+    // TODO 400 Bad Request
     @GetMapping (produces = "application/json") // 모든 아이디 조회
     public ResponseEntity getAnswers(@Positive @RequestParam int page,
                                      @Positive @RequestParam int size) {
@@ -74,6 +78,7 @@ public class AnswerController {
                 HttpStatus.OK);
     }
 
+    // TODO 500 Internal Server Error
     @DeleteMapping(value = "/{answer-id}")  // 삭제
     public ResponseEntity deleteTodo(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
