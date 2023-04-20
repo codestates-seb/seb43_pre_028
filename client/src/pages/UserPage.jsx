@@ -2,7 +2,7 @@ import Header from '../components/layout/header/Header';
 import Nav from '../components/layout/nav/Nav';
 import Main from '../components/layout/main/Main';
 import Footer from '../components/layout/footer/Footer';
-import UserEdit from '../components/useredit/User';
+import User from '../components/user/User';
 
 function UserPage() {
   return (
@@ -11,7 +11,7 @@ function UserPage() {
       <div className="flex w-full max-w-[1265px] mt-[50px] mx-auto">
         <Nav />
         <Main>
-          <UserEdit />
+          <User />
         </Main>
       </div>
       <Footer />
