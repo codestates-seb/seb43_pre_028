@@ -8,6 +8,7 @@ import SignUpPage from '../pages/SignUpPage';
 import AskQuestionPage from '../pages/AskQuestionPage';
 import Home from '../pages/Home';
 import QuestionDetailPage from '../pages/QuestionDetailPage';
+import UserPage from '../pages/UserPage';
 
 function App() {
   return (
@@ -37,7 +38,9 @@ function App() {
       <Route path="questions/detail" element={<QuestionDetailPage />} />
       <Route path="users/login" element={<LoginPage />} />
       <Route path="users/signup" element={<SignUpPage />} />
+      <Route path="users/" element={<UserPage />} />
     </Routes>
+    // <UserEditPage />
   );
 }
 
