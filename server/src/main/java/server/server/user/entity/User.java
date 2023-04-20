@@ -22,18 +22,12 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-//    @Column(nullable = false)
-//    private LocalDateTime createdAt = LocalDateTime.now();
-//
-//    @Column(nullable = false, name = "UPDATED_AT")
-//    private LocalDateTime updatedAt = LocalDateTime.now();
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "STATUS")
     private UserStatus userStatus = UserStatus.USER_EXIST;
 
     @Column(nullable = false,columnDefinition = "TEXT")
-    private String displayName;
+    private String displayName="사용자";
 
     @Column(nullable = false, updatable = false,unique = true,columnDefinition = "TEXT")
     private String email;

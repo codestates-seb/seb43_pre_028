@@ -27,30 +27,18 @@ public class UserController {
         this.userService = userService;
         this.mapper = mapper;
     }
-
-    /**
-     * 회원가입 API
-     * **/
+    //회원가입
     @PostMapping("/sign-up")
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto userDto) {
-        User user = mapper.userPostDtoToUser(userDto);
-        User createdUser = userService.createUser(user);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(createdUser)),
-                HttpStatus.CREATED);
+        User user = mapper.userPostDtoToUser(userDto);//id,pass 유효성검증 뒤, 전달
+        User createdUser = userService.createUser(user);//이미 있는 이메일인지 확인 뒤, 데이터베이스에 저장
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.userToUserResponseDto(createdUser)), HttpStatus.CREATED);
     }
-
-    /**
-     * 토근에 해당하는 User 정보를
-     * 클라이언트에게 전달
-     **/
+    //회원의 정보를 전달
     @GetMapping("/user")
     public ResponseEntity getUser(){
         User user =  userService.getLoginUser();
-
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(user)),
-                HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
     }
 
 }

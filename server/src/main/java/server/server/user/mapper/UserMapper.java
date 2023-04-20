@@ -13,7 +13,6 @@ public interface UserMapper {
         User user = new User();
 
         user.setEmail(userPostDto.getEmail());
-        user.setDisplayName(userPostDto.getDisplayName());
         user.setPassword(userPostDto.getPassword());
 
         return user;
@@ -22,11 +21,8 @@ public interface UserMapper {
     default UserResponseDto userToUserResponseDto(User user) {
 
         UserResponseDto userResponseDto = new UserResponseDto();
-
-//        userResponseDto.setUserId(user.getUserId());
         userResponseDto.setEmail(user.getEmail());
         userResponseDto.setDisplayName(user.getDisplayName());
-//        userResponseDto.setPassword(user.getPassword());
         userResponseDto.setImage(user.getImage());
         userResponseDto.setUserStatus(user.getUserStatus());
 
