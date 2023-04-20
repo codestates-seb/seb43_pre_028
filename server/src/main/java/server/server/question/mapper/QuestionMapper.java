@@ -1,7 +1,6 @@
 package server.server.question.mapper;
 
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
 
