@@ -23,7 +23,6 @@ public class QuestionService {
     //질문 생성
     public Question creteQuestion(Question question){
 
-
         return questionRepository.save(question);
     }
 
@@ -67,13 +66,12 @@ public class QuestionService {
 
     //해당 게시글이 존재하는지 체크
     public Question findVerifiedQuestion(long questionId){
-        Optional<Question> optionalQuestion =
-                questionRepository.findById(questionId);
+        Optional<Question> question =
+                questionRepository.findByQuestion(questionId);
         Question findQuestion =
-                optionalQuestion.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+                question.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
         return findQuestion;
     }
-
 
 }

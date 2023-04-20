@@ -17,20 +17,26 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
+
     @Column(nullable = false, length = 1000)
     private String title;
+
     @Column(nullable = false, length = 5000)
     private String contentProblem;
+
     @Column(nullable = false, length = 5000)
     private String contentTried;
-    @CreatedDate
+
     @Column
     private LocalDateTime createdAt = LocalDateTime.now();
-    @LastModifiedDate
-    @Column(name = "LAST_MODIFIED_AT")
+
+    @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now() ;
+
     @Column(nullable = false)
     private int views;
+
+    @Column(nullable = false)
     private int vote;
     //멤버//
 

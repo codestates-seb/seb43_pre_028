@@ -1,11 +1,14 @@
 package server.server.question.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import server.server.question.entity.Question;
 
 import java.util.Optional;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    Optional<Question> findByTitle(String title);
+    @Query("SELECT c FROM Question c WHERE c.questionId = :questionId")
+    Optional<Question> findByQuestion(long questionId);
+
 
 }

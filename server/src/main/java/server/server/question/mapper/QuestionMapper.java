@@ -7,7 +7,6 @@ import server.server.question.entity.Question;
 
 import java.util.List;
 
-@Component
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
     Question questionPostToQuestion(QuestionDto.Post postQuestion);
