@@ -24,6 +24,7 @@ public class QuestionService {
     public Question creteQuestion(Question question){
 
         return questionRepository.save(question);
+
     }
 
     //질문 수정
@@ -67,7 +68,7 @@ public class QuestionService {
     //해당 게시글이 존재하는지 체크
     public Question findVerifiedQuestion(long questionId){
         Optional<Question> question =
-                questionRepository.findByQuestion(questionId);
+                questionRepository.findByQuestionId(questionId);
         Question findQuestion =
                 question.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
