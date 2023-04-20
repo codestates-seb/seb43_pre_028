@@ -7,7 +7,7 @@ import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 import AskQuestionPage from '../pages/AskQuestionPage';
 import Home from '../pages/Home';
-import QuestionDetail from './QuestionDetail';
+import QuestionDetailPage from '../pages/QuestionDetailPage';
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           </div>
         }
       />
-      <Route path="questions/detail" element={<QuestionDetail />} />
+      <Route path="questions/detail" element={<QuestionDetailPage />} />
       <Route path="users/login" element={<LoginPage />} />
       <Route path="users/signup" element={<SignUpPage />} />
     </Routes>

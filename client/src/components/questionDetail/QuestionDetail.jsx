@@ -1,6 +1,6 @@
 import React from 'react';
-import dummy from '../data/dummy';
-import { VoteUpIcon, VoteDownIcon } from './Icons';
+import dummy from '../../data/dummy';
+import { VoteUpIcon, VoteDownIcon } from '../Icons';
 
 // 질문 제목을 렌더링하는 컴포넌트
 function Title() {
