@@ -78,7 +78,7 @@ public class AnswerController {
                 HttpStatus.OK);
     }
 
-    // TODO 500 Internal Server Error
+    // TODO 500 Internal Server Error.
     @DeleteMapping(value = "/{answer-id}")  // 삭제
     public ResponseEntity deleteTodo(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
