@@ -66,7 +66,7 @@ public class AnswerController {
     }
 
     // 204 No Content
-    @DeleteMapping(value = "/{answer-id}")  // 삭제
+    @DeleteMapping("/{answer-id}")  // 삭제
     public ResponseEntity deleteAnswer(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
 
