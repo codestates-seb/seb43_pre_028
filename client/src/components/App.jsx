@@ -1,7 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import Footer from './layout/footer/Footer';
-import Header from './layout/header/Header';
-import Main from './layout/main/Main';
+
 import QuestionPage from '../pages/QuestionPage';
 import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
@@ -9,6 +7,7 @@ import AskQuestionPage from '../pages/AskQuestionPage';
 import Home from '../pages/Home';
 import QuestionDetailPage from '../pages/QuestionDetailPage';
 import UserPage from '../pages/UserPage';
+import ErrorPage from '../pages/ErrorPage';
 
 function App() {
   return (
@@ -18,11 +17,11 @@ function App() {
       <Route path="questions" element={<QuestionPage />} />
       <Route path="questions/new" element={<AskQuestionPage />} />
       <Route path="questions/detail" element={<QuestionDetailPage />} />
+      <Route path="users/" element={<UserPage />} />
       <Route path="users/login" element={<LoginPage />} />
       <Route path="users/signup" element={<SignUpPage />} />
-      <Route path="users/" element={<UserPage />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
-    // <UserEditPage />
   );
 }
 
