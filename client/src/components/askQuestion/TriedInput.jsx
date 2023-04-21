@@ -1,4 +1,5 @@
 import React from 'react';
+import TextEditor from './TextEditor';
 
 function TriedInput() {
   return (
@@ -12,7 +13,9 @@ function TriedInput() {
           resulted. Minimum 20 characters.
         </p>
       </div>
-      <div className="h-64 w-full bg-[#7cc6fe]">StackEdit</div>
+      <div>
+        <TextEditor />
+      </div>
     </form>
   );
 }
