@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as QuestionBg } from '../../assets/img/question-create-bg.svg';
+// import { ReactComponent as QuestionBg } from '../../assets/img/question-create-bg.svg';
 import WritingGuide from './WritingGuide';
 import TitleInput from './TitleInput';
 import ProblemInput from './ProblemInput';
@@ -8,7 +8,7 @@ import { QuestionBGImg } from '../Icons';
 
 function AskQuestion() {
   return (
-    <div className="flex w-full flex-col p-10 mt-6 ">
+    <div className="flex w-full flex-col">
       <div className="flex justify-between items-center mb-7 ">
         <h1 className="text-4xl font-semiold">Ask a public question</h1>
         <QuestionBGImg />
