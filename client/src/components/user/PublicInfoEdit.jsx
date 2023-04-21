@@ -10,9 +10,10 @@ function PublicInfoEdit() {
   const modules = {
     toolbar: {
       container: [
-        ['bold', 'italic'],
+        [{ header: [1, 2, false] }],
+        ['underline', 'strike', 'blockquote'],
         [{ list: 'ordered' }, { list: 'bullet' }, 'link'],
-        ['image', 'video'],
+        ['image', 'code-block'],
         ['clean'],
       ],
     },
