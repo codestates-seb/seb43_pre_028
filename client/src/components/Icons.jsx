@@ -130,11 +130,15 @@ export function VoteIcon({ className }) {
 }
 
 export function VoteDownIcon({ className }) {
-  return <VoteDown {...validateClassName(className)} />;
+  return (
+    <VoteDown className="fill-current text-[#BABFC4]" {...validateClassName(className)} />
+  );
 }
 
 export function VoteUpIcon({ className }) {
-  return <VoteUp {...validateClassName(className)} />;
+  return (
+    <VoteUp className="fill-current text-[#BABFC4]" {...validateClassName(className)} />
+  );
 }
 
 export function BirthIcon({ className }) {
