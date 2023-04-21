@@ -1,0 +1,80 @@
+Index: server/src/main/java/server/server/answer/exception/BusinessLogicException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/server/server/answer/exception/BusinessLogicException.java b/server/src/main/java/server/server/exception/BusinessLogicException.java
+rename from server/src/main/java/server/server/answer/exception/BusinessLogicException.java
+rename to server/src/main/java/server/server/exception/BusinessLogicException.java
+--- a/server/src/main/java/server/server/answer/exception/BusinessLogicException.java	(revision bee0d571e58316407ed4b1c8c7e02b5532c620d8)
++++ b/server/src/main/java/server/server/exception/BusinessLogicException.java	(date 1681820093945)
+@@ -1,4 +1,4 @@
+-package server.server.answer.exception;
++package server.server.exception;
+ 
+ import lombok.Getter;
+ 
+Index: server/src/main/java/server/server/dto/SingleResponseDto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/server/server/dto/SingleResponseDto.java b/server/src/main/java/server/server/answer/dto/SingleResponseDto.java
+rename from server/src/main/java/server/server/dto/SingleResponseDto.java
+rename to server/src/main/java/server/server/answer/dto/SingleResponseDto.java
+--- a/server/src/main/java/server/server/dto/SingleResponseDto.java	(revision bee0d571e58316407ed4b1c8c7e02b5532c620d8)
++++ b/server/src/main/java/server/server/answer/dto/SingleResponseDto.java	(date 1681821643246)
+@@ -1,4 +1,4 @@
+-package server.server.dto;
++package server.server.answer.dto;
+ 
+ import lombok.AllArgsConstructor;
+ import lombok.Getter;
+Index: server/src/main/java/server/server/answer/exception/ExceptionCode.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/server/server/answer/exception/ExceptionCode.java b/server/src/main/java/server/server/exception/ExceptionCode.java
+rename from server/src/main/java/server/server/answer/exception/ExceptionCode.java
+rename to server/src/main/java/server/server/exception/ExceptionCode.java
+--- a/server/src/main/java/server/server/answer/exception/ExceptionCode.java	(revision bee0d571e58316407ed4b1c8c7e02b5532c620d8)
++++ b/server/src/main/java/server/server/exception/ExceptionCode.java	(date 1681820093973)
+@@ -1,4 +1,4 @@
+-package server.server.answer.exception;
++package server.server.exception;
+ 
+ import lombok.Getter;
+ 
+Index: server/src/main/java/server/server/dto/MultiResponseDto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/server/server/dto/MultiResponseDto.java b/server/src/main/java/server/server/answer/dto/MultiResponseDto.java
+rename from server/src/main/java/server/server/dto/MultiResponseDto.java
+rename to server/src/main/java/server/server/answer/dto/MultiResponseDto.java
+--- a/server/src/main/java/server/server/dto/MultiResponseDto.java	(revision bee0d571e58316407ed4b1c8c7e02b5532c620d8)
++++ b/server/src/main/java/server/server/answer/dto/MultiResponseDto.java	(date 1681821643218)
+@@ -1,4 +1,4 @@
+-package server.server.dto;
++package server.server.answer.dto;
+ 
+ import lombok.Getter;
+ import org.springframework.data.domain.Page;
+Index: server/src/main/java/server/server/dto/PageInfo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/server/server/dto/PageInfo.java b/server/src/main/java/server/server/answer/dto/PageInfo.java
+rename from server/src/main/java/server/server/dto/PageInfo.java
+rename to server/src/main/java/server/server/answer/dto/PageInfo.java
+--- a/server/src/main/java/server/server/dto/PageInfo.java	(revision bee0d571e58316407ed4b1c8c7e02b5532c620d8)
++++ b/server/src/main/java/server/server/answer/dto/PageInfo.java	(date 1681821643185)
+@@ -1,4 +1,4 @@
+-package server.server.dto;
++package server.server.answer.dto;
+ 
+ import lombok.AllArgsConstructor;
+ import lombok.Getter;
