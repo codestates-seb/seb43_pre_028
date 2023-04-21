@@ -56,6 +56,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User patchUser(User user) {
+        if(user.getPassword().length()<=20) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        }
+        return userRepository.save(user);
+    }
+
+
     private void verifyExistsEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent())

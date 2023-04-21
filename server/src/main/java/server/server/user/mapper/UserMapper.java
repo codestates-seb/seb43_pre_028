@@ -2,6 +2,7 @@ package server.server.user.mapper;
 
 
 import org.mapstruct.Mapper;
+import server.server.user.dto.UserPatchDto;
 import server.server.user.dto.UserPostDto;
 import server.server.user.dto.UserResponseDto;
 import server.server.user.entity.User;
@@ -14,6 +15,14 @@ public interface UserMapper {
 
         user.setEmail(userPostDto.getEmail());
         user.setPassword(userPostDto.getPassword());
+
+        return user;
+    }
+
+    default User userPatchDtoToUser(User user, UserPatchDto userPatchDto) {
+        user.setDisplayName(userPatchDto.getDisplayName());
+        user.setPassword(userPatchDto.getPassword());
+        user.setImage(userPatchDto.getImage());
 
         return user;
     }

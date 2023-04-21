@@ -29,6 +29,8 @@ public class SecurityConfig{
     SecurityFilterChain filterChain(HttpSecurity http) throws  Exception{
 
         return http
+                .headers().frameOptions().disable()
+                .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -36,8 +38,9 @@ public class SecurityConfig{
                 .httpBasic().disable()
                 .apply(new MyCustomDsl()) // 커스텀 필터 등록
                 .and()
-                .authorizeRequests(authroize -> authroize.antMatchers("/v1/user/**")
-                        .access("hasRole('ROLE_USER')")
+                .authorizeRequests(authroize -> authroize.antMatchers("/h2/**").permitAll()
+                        //.antMatchers("/v1/user/**")
+                        //.access("hasRole('ROLE_USER')")
                         .anyRequest().permitAll())
                 .build();
 

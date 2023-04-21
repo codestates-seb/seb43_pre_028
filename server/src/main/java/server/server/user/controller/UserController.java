@@ -7,23 +7,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.server.dto.SingleResponseDto;
+import server.server.exception.BusinessLogicException;
+import server.server.exception.ExceptionCode;
+import server.server.user.dto.UserPatchDto;
 import server.server.user.dto.UserPostDto;
 import server.server.user.entity.User;
 import server.server.user.mapper.UserMapper;
+import server.server.user.repository.UserRepository;
 import server.server.user.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1")
 @Validated
 @Slf4j
 public class UserController {
-
+    private final UserRepository userRepository;
     private UserService userService;
     private UserMapper mapper;
 
-    public UserController(UserService userService, UserMapper mapper) {
+    public UserController(UserRepository userRepository,UserService userService, UserMapper mapper) {
+        this.userRepository = userRepository;
         this.userService = userService;
         this.mapper = mapper;
     }
@@ -39,6 +45,17 @@ public class UserController {
     public ResponseEntity getUser(){
         User user =  userService.getLoginUser();
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
+        //User findUser=userService.findVerifiedUser(1);
+        //return new ResponseEntity<>(new SingleResponseDto<>(mapper.userToUserResponseDto(findUser)), HttpStatus.OK);
     }
 
+    //회원정보수정
+    @PatchMapping("/user/patch")
+    public ResponseEntity patchUser(@Valid @RequestBody UserPatchDto userDto){
+        User user = userService.findVerifiedUser(1);
+        //User user =  userService.getLoginUser();
+        User user2 = mapper.userPatchDtoToUser(user, userDto);
+        User patchUser = userService.patchUser(user2);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.userToUserResponseDto(patchUser)), HttpStatus.OK);
+    }
 }
