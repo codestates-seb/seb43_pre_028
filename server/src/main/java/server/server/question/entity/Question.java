@@ -3,9 +3,12 @@ package server.server.question.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import server.server.answer.entity.Answer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,6 +39,9 @@ public class Question {
 
     @Column(nullable = false)
     private int vote;
+
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers = new ArrayList<>();
     //멤버//
 
     //답변

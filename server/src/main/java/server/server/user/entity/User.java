@@ -3,6 +3,7 @@ package server.server.user.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import server.server.answer.entity.Answer;
 import server.server.audit.BaseEntity;
 
 
@@ -59,6 +60,9 @@ public class User extends BaseEntity {
 
     @Column(nullable = true)
     private String role; //USER
+
+    @OneToMany(mappedBy = "user")
+    private List<Answer> answers = new ArrayList<>();
 
 //    public List<String> getRoleList(){
 //        if(this.roles.length()>0){
