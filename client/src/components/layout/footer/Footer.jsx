@@ -1,4 +1,3 @@
-import React from 'react';
 import ListItem from './ListItem';
 import CopyRight from './CopyRight';
 import { StackoverFlowIcon } from '../../Icons';

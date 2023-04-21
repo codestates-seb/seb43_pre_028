@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../components/layout/header/Header';
 import SignUp from '../components/signup/SignUp';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FacebookIcon, GithubIcon, GoogleIcon } from '../Icons';
 import ButtonCard from '../ui/ButtonCard';
 

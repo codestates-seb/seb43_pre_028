@@ -1,5 +1,3 @@
-import React from 'react';
-
 function TitleInput() {
   return (
     <div className=" max-w-7xl border-solid border-2 border-slate-400 mb-5 rounded-md p-8">

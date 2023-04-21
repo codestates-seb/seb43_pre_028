@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SignUpLinkIcon } from '../Icons';
 import OAuthPart from '../login/OAuthPart';
 import LeftContents from './LeftContents';

@@ -1,4 +1,3 @@
-import React from 'react';
 import dummy from '../../data/dummy';
 import { VoteUpIcon, VoteDownIcon } from '../Icons';
 import Texteditor from './TextEditor';
@@ -122,7 +121,10 @@ export default function QuestionDetail() {
       <div className="text-xl mt-10">{dummy[0].answer.length} Answers</div>
       <div className="flex flex-col mt-4">
         {dummy[0].answer.map(answer => (
-          <div className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid">
+          <div
+            key={Math.random().toString(36).substring(2, 9)}
+            className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid"
+          >
             <div className="mr-4 flex-shrink-0 ">
               <Voting data={answer} />
             </div>
