@@ -1,5 +1,3 @@
-import React from 'react';
-// import { ReactComponent as QuestionBg } from '../../assets/img/question-create-bg.svg';
 import WritingGuide from './WritingGuide';
 import TitleInput from './TitleInput';
 import ProblemInput from './ProblemInput';

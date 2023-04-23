@@ -1,7 +1,7 @@
 import Header from './Header';
 import Content from './Content';
 
-function Question() {
+function Questions() {
   return (
     <div className="w-full">
       <Header />
@@ -10,4 +10,4 @@ function Question() {
   );
 }
 
-export default Question;
+export default Questions;

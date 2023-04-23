@@ -7,6 +7,7 @@ import { ReactComponent as Github } from '../assets/img/github.svg';
 import { ReactComponent as Google } from '../assets/img/google.svg';
 import { ReactComponent as Hamburger } from '../assets/img/hamburger.svg';
 import { ReactComponent as Info } from '../assets/img/info.svg';
+import { ReactComponent as PageNotFound } from '../assets/img/page-not-found.svg';
 import { ReactComponent as Pencil } from '../assets/img/pencil.svg';
 import { ReactComponent as Question } from '../assets/img/question.svg';
 import { ReactComponent as QuestionBg } from '../assets/img/question-create-bg.svg';
@@ -76,6 +77,10 @@ export function PencilIcon({ className }) {
   return <Pencil {...validateClassName(className)} />;
 }
 
+export function PageNotFoundLogo({ className }) {
+  return <PageNotFound {...validateClassName(className)} />;
+}
+
 export function QuestionIcon({ className }) {
   return <Question {...validateClassName(className)} />;
 }
@@ -125,11 +130,15 @@ export function VoteIcon({ className }) {
 }
 
 export function VoteDownIcon({ className }) {
-  return <VoteDown {...validateClassName(className)} />;
+  return (
+    <VoteDown className="fill-current text-[#BABFC4]" {...validateClassName(className)} />
+  );
 }
 
 export function VoteUpIcon({ className }) {
-  return <VoteUp {...validateClassName(className)} />;
+  return (
+    <VoteUp className="fill-current text-[#BABFC4]" {...validateClassName(className)} />
+  );
 }
 
 export function BirthIcon({ className }) {

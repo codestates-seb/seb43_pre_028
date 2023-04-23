@@ -1,5 +1,3 @@
-import React from 'react';
-
 function WritingGuide() {
   return (
     <div className="bg-[#EBF4FB] border-solid border-2 border-[#1e95ff] mb-5 rounded-md p-6 max-w-7xl">

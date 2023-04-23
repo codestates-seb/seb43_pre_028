@@ -1,6 +1,6 @@
-import React from 'react';
 import dummy from '../../data/dummy';
 import { VoteUpIcon, VoteDownIcon } from '../Icons';
+import Texteditor from './TextEditor';
 
 // 질문 제목을 렌더링하는 컴포넌트
 function Title() {
@@ -21,9 +21,9 @@ function Days() {
     <div className="text-sm pb-4 border-b-2 border-[#E3E6E8] border-solid">
       <span className="font-light">Asked </span>
       {daysSinceCreated} days ago
-      <span className="font-light"> Modified </span>
+      <span className="font-light"> &nbsp;&nbsp;&nbsp;Modified </span>
       {daysSinceModified} days ago
-      <span className="font-light"> Viewed </span>
+      <span className="font-light"> &nbsp;&nbsp;&nbsp;Viewed </span>
       {dummy[0].views} times
     </div>
   );
@@ -95,7 +95,7 @@ function User({ data }) {
 // 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
 export default function QuestionDetail() {
   return (
-    <section className="flex w-full flex-col p-6 shadow-lg">
+    <section className="flex w-full flex-col pl-6">
       <div className="flex w-full justify-between">
         <Title />
         <button
@@ -118,10 +118,13 @@ export default function QuestionDetail() {
           </div>
         </div>
       </div>
-      <div className="text-l mt-10">{dummy[0].answer.length} Answers</div>
+      <div className="text-xl mt-10">{dummy[0].answer.length} Answers</div>
       <div className="flex flex-col mt-4">
         {dummy[0].answer.map(answer => (
-          <div className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid">
+          <div
+            key={Math.random().toString(36).substring(2, 9)}
+            className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid"
+          >
             <div className="mr-4 flex-shrink-0 ">
               <Voting data={answer} />
             </div>
@@ -136,13 +139,16 @@ export default function QuestionDetail() {
         ))}
       </div>
       <div className="mb-4">Your Answer</div>
-      <div className="w-[650px] h-[300px] bg-[#a5a5a5]">l</div>
-      <button
-        type="button"
-        className="flex mt-4 text-sm font-light bg-[#1e95ff] hover:bg-[#0074CC] text-white rounded-[4px] p-2"
-      >
-        Post Your Anwser
-      </button>
+      {/* <div className="w-[650px] h-[300px] bg-[#a5a5a5]">l</div> */}
+      <Texteditor />
+      <div className="flex justify-between">
+        <button
+          type="button"
+          className="flex grow-0 mt-4 text-sm font-light bg-[#1e95ff] hover:bg-[#0074CC] text-white rounded-[4px] p-2"
+        >
+          Post Your Anwser
+        </button>
+      </div>
     </section>
   );
 }

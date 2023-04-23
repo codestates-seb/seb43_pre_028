@@ -14,17 +14,22 @@ function ErrorPage() {
           </div>
           <div className="flex flex-col gap-4 ">
             <p>
-              Try <span className="text-[#4b91d5]">searching for similar questions</span>
+              Try{' '}
+              <span className="cursor-pointer text-[#4b91d5]">
+                searching for similar questions
+              </span>
             </p>
             <p>
-              Browse our <span className="text-[#4b91d5]">recent questions</span>
+              Browse our{' '}
+              <span className="cursor-pointer text-[#4b91d5]">recent questions</span>
             </p>
             <p>
-              Browse our <span className="text-[#4b91d5]">popular tags</span>
+              Browse our{' '}
+              <span className="cursor-pointer text-[#4b91d5]">popular tags</span>
             </p>
             <p>
               If you feel something is missing that should be here,{' '}
-              <span className="text-[#4b91d5]">contact us.</span>
+              <span className="cursor-pointer text-[#4b91d5]">contact us.</span>
             </p>
           </div>
         </div>

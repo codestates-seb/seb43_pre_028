@@ -1,4 +1,3 @@
-import React from 'react';
 import UserLabel from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ButtonCard from '../ui/ButtonCard';
 import PublicInfoEdit from './PublicInfoEdit';
 import LinksEdit from './LinksEdit';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BirthIcon, CalendarIcon, ClockIcon, EditIcon, NetworkIcon } from '../Icons';
 import ButtonCard from '../ui/ButtonCard';
 

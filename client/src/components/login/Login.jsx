@@ -1,4 +1,3 @@
-import React from 'react';
 import { SignUpLinkIcon, StackoverFlowIcon } from '../Icons';
 import OAuthPart from './OAuthPart';
 import LoginForm from './LoginForm';
