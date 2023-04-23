@@ -7,7 +7,7 @@ function Aside() {
         <h5 className="p-3 text-[13px] bg-[#fbf3d5] font-semibold border-solid border-[#f1e5bc] border-b-[1px]">
           The OverFlow Blog
         </h5>
-        <li className="flex gap-1 px-4 py-2 ">
+        <li className="flex w-full gap-1 px-4 py-2 ">
           <div>
             <PencilIcon />
           </div>
