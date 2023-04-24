@@ -1,7 +1,7 @@
 package server.server.question.mapper;
 
 import org.mapstruct.Mapper;
-import server.server.answer.dto.AnswerDto;
+
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
 

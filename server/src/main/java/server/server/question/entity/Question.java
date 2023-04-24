@@ -3,10 +3,6 @@ package server.server.question.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import server.server.answer.entity.Answer;
-import server.server.question.audit.QuestionAuditable;
-import server.server.questionVote.entity.QuestionVote;
-import server.server.user.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
