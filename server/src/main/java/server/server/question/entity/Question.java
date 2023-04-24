@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.answer.entity.Answer;
+import server.server.answer.entity.Answer;
 import server.server.question.audit.QuestionAuditable;
 import server.server.questionVote.entity.QuestionVote;
 import server.server.user.entity.User;
@@ -38,6 +39,11 @@ public class Question extends QuestionAuditable {
     private int viewCount;
 
     @Column(nullable = false)
+    private int vote;
+
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers = new ArrayList<>();
+    //멤버//
     private int questionVoteCount;
 
     @OneToMany(mappedBy = "question")
