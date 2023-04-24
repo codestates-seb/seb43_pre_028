@@ -11,6 +11,8 @@ import server.server.answer.entity.Answer;
 import server.server.answer.mapper.AnswerMapper;
 import server.server.answer.service.AnswerService;
 import server.server.dto.SingleResponseDto;
+import server.server.question.dto.QuestionDto;
+import server.server.question.entity.Question;
 import server.server.utils.UriCreator;
 
 import javax.validation.Valid;
@@ -48,6 +50,8 @@ public class AnswerController {
 //        return ResponseEntity.created(location).build();
         return new ResponseEntity<>(new SingleResponseDto<>(location), HttpStatus.CREATED);
     }
+
+
 
     // 200 OK
     @PatchMapping(value = "questions/{question-id}/answers/{answer-id}", produces = "application/json")  // 수정

@@ -40,16 +40,13 @@ public class QuestionService {
     //질문 생성
     public Question creteQuestion(Question question){
 
-        // 로그인한 사용자가 맞는지 확인
-        // 로그인을 안하면 로그인 하라고 해야함...
+        // 회원가입한 유저의 아이디를 가져와서 그 유저가 게시판을 생성해야 되는데 어떻게?
 
-        // 로그인을 하면 생성
-
-        //회원 존재 여부
 
         return questionRepository.save(question);
 
     }
+
 
     //질문 수정
     public Question updateQuestion(Question question){
@@ -129,6 +126,11 @@ public class QuestionService {
                 question.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
         return findQuestion;
+    }
+
+    private User verifyExistingUser(User user) {
+
+        return userService.findVerifiedUser(user.getUserId());
     }
 
 }

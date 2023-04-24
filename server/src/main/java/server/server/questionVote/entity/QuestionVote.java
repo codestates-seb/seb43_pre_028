@@ -37,5 +37,8 @@ public class QuestionVote extends BaseEntity {
     }
     public void setUser(User user) {
         this.user = user;
+        if (!this.user.getQuestionVotes().contains(this)) {
+            this.question.getQuestionVotes().add(this);
+        }
     }
 }

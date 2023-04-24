@@ -48,14 +48,11 @@ public class QuestionController {
     // 질문 생성
     @PostMapping
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post postQuestion){
-
         Question question = mapper.postDtoToQuestion(postQuestion);
         Question createdQuestion = questionService.creteQuestion(question);
 
+
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseDto(createdQuestion)), HttpStatus.CREATED);
-
-
-
     }
 
     //질문 수정
@@ -82,8 +79,9 @@ public class QuestionController {
         QuestionDto.Response response = mapper.questionToResponseDto(question);
 
         //questionService.viewCountValidation(question, servletRequest, servletResponse);
-
         //return new ResponseEntity<>(response, HttpStatus.OK);
+
+
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
