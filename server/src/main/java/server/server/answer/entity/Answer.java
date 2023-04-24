@@ -37,14 +37,27 @@ public class Answer {
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();  // 수정 시간
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
 
     @OneToMany(mappedBy = "answer")
     private List<AnswerVote> answerVotes = new ArrayList<>();
+
+    public String getDisplayName(){
+        return user.getDisplayName();
+    }
+    public long getUserId(){
+        return user.getUserId();
+    }
+    public long getQuestionId(){
+        return question.getQuestionId();
+    }
+//    public void addComment(Comments comment){
+//        comments.add(comment);
+//    }
 }

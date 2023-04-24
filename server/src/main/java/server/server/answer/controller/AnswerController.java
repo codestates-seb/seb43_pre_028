@@ -22,7 +22,7 @@ import java.util.List;
 @Validated
 @Slf4j
 public class AnswerController {
-    private final static String ANSWER_DEFAULT_URL = "/";
+//    private final static String ANSWER_DEFAULT_URL = "/";
     private final AnswerService answerService;
     private final AnswerMapper answerMapper;
 

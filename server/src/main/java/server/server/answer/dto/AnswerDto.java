@@ -1,6 +1,8 @@
 package server.server.answer.dto;
 
 import lombok.*;
+import server.server.question.entity.Question;
+import server.server.user.entity.User;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -18,6 +20,20 @@ public class AnswerDto {
         private long userId;
         @NotBlank(message = "내용을 적어주세요.")
         private String content;
+
+        public Question getQuestion() {
+            Question question = new Question();
+            question.setQuestionId(questionId);
+
+            return question;
+        }
+
+        public User getUser() {
+            User user = new User();
+            user.setUserId(userId);
+
+            return user;
+        }
     }
 
     @Getter
@@ -30,7 +46,7 @@ public class AnswerDto {
     }
 
     @Getter
-    @Builder
+    @Setter
     public static class responseAnswer {
         private long answerId;
         private long userId;
