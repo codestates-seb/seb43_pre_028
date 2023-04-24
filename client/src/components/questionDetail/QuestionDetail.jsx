@@ -1,17 +1,14 @@
-import dummy from '../../data/dummy';
+import { React, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { VoteUpIcon, VoteDownIcon } from '../Icons';
 import Texteditor from './TextEditor';
-
-// 질문 제목을 렌더링하는 컴포넌트
-function Title() {
-  return <div className="text-2xl">{dummy[0].title}</div>;
-}
+import { selectQuestion, fetchQuestion } from '../../store/questionSlice';
 
 // 질문이 생성된 날짜, 수정된 날짜, 조회수를 렌더링하는 컴포넌트
-function Days() {
+function Days({ data }) {
   const today = new Date(); // 오늘 날짜
-  const created = new Date(dummy[0].createdAt); // 질문 생성 날짜
-  const modified = new Date(dummy[0].modifiedAt); // 질문 수정 날짜
+  const created = new Date(data.createdAt); // 질문 생성 날짜
+  const modified = new Date(data.modifiedAt); // 질문 수정 날짜
 
   // 각 날짜의 차이를 일 수로 계산
   const daysSinceCreated = Math.floor((today - created) / (1000 * 60 * 60 * 24));
@@ -24,7 +21,7 @@ function Days() {
       <span className="font-light"> &nbsp;&nbsp;&nbsp;Modified </span>
       {daysSinceModified} days ago
       <span className="font-light"> &nbsp;&nbsp;&nbsp;Viewed </span>
-      {dummy[0].views} times
+      {data.views} times
     </div>
   );
 }
@@ -92,12 +89,22 @@ function User({ data }) {
   );
 }
 
-// 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
 export default function QuestionDetail() {
+  const dispatch = useDispatch();
+  const question = useSelector(selectQuestion);
+
+  useEffect(() => {
+    async function fetchQuestionData() {
+      await dispatch(fetchQuestion('123'));
+    }
+    fetchQuestionData();
+  }, [dispatch]);
+
+  // 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
   return (
     <section className="flex w-full flex-col pl-6">
       <div className="flex w-full justify-between">
-        <Title />
+        <div className="text-2xl">{question.title}</div>
         <button
           type="button"
           className="flex text-sm font-light bg-[#1e95ff] hover:bg-[#0074CC] text-white rounded-[4px] p-2"
@@ -105,22 +112,22 @@ export default function QuestionDetail() {
           Ask Question
         </button>
       </div>
-      <Days />
+      <Days data={question} />
       <div className="flex mt-4 w-full">
         <div className="mr-4 flex-shrink-0">
-          <Voting data={dummy[0]} />
+          <Voting data={question} />
         </div>
         <div className="break-all">
-          {dummy[0].content}
+          {question.content}
           <div className="flex mt-10 justify-between">
             <Edit className="mr-2" />
-            <User data={dummy[0]} />
+            <User data={question} />
           </div>
         </div>
       </div>
-      <div className="text-xl mt-10">{dummy[0].answer.length} Answers</div>
+      <div className="text-xl mt-10">{question.answer.length} Answers</div>
       <div className="flex flex-col mt-4">
-        {dummy[0].answer.map(answer => (
+        {question.answer.map(answer => (
           <div
             key={Math.random().toString(36).substring(2, 9)}
             className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid"
@@ -139,7 +146,6 @@ export default function QuestionDetail() {
         ))}
       </div>
       <div className="mb-4">Your Answer</div>
-      {/* <div className="w-[650px] h-[300px] bg-[#a5a5a5]">l</div> */}
       <Texteditor />
       <div className="flex justify-between">
         <button

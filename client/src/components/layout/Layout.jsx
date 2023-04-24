@@ -7,7 +7,6 @@ import Footer from './footer/Footer';
 function Layout({ layoutInfo, children }) {
   const { withFooter, withNav, withMain, withAside } = layoutInfo;
 
-  console.log('rendered!!');
   return (
     <div className="flex flex-col justify-center w-screen">
       <Header />
