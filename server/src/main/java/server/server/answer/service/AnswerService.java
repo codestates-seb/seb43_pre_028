@@ -32,11 +32,11 @@ public class AnswerService {
     }
 
     public Answer createAnswer(Answer answer) {  // 생성
-        Question question = questionService.findVerifiedQuestion(answer.getQuestion().getQuestionId());
-        User user = userService.findVerifiedUser(answer.getUser().getUserId());
-
-        answer.setQuestion(question);
-        answer.setUser(user);
+//        Question question = questionService.findVerifiedQuestion(answer.getQuestion().getQuestionId());
+//        User user = userService.findVerifiedUser(answer.getUser().getUserId());
+//
+//        answer.setQuestion(question);
+//        answer.setUser(user);
 
         return answerRepository.save(answer);
     }
@@ -61,7 +61,7 @@ public class AnswerService {
     }
 
     public Answer findVerifiedAnswer(long answerId) {  // 해당 답변글의 존재 유무 체크
-        Answer answer = answerRepository.findById(answerId)
+        Answer answer = answerRepository.findByAnswerId(answerId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
 
         return answer;

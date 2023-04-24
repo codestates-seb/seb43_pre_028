@@ -11,11 +11,9 @@ import server.server.answer.entity.Answer;
 import server.server.answer.mapper.AnswerMapper;
 import server.server.answer.service.AnswerService;
 import server.server.dto.SingleResponseDto;
-import server.server.utils.UriCreator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.net.URI;
 import java.util.List;
 
 @CrossOrigin
@@ -34,36 +32,33 @@ public class AnswerController {
     }
 
     // 201 create
-    @PostMapping("questions/{question-id}/answers")  // 생성
-    public ResponseEntity postAnswer(@PathVariable("question-id") long questionId,
-                                     @Valid @RequestBody AnswerDto.postAnswer postAnswer) {
-        Answer answer = answerMapper.answerPostToAnswer(questionId, postAnswer);
+    @PostMapping("answers")  // 생성
+    public ResponseEntity postAnswer(@Valid @RequestBody AnswerDto.postAnswer postAnswer) {
+        Answer answer = answerMapper.answerPostToAnswer(postAnswer);
 
         Answer response = answerService.createAnswer(answer);
 
+        return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToAnswerResponse(response)), HttpStatus.CREATED);
 //        Answer response = answerService.createAnswer(answerMapper.answerPostToAnswer(questionId, postAnswer));
-
-        URI location = UriCreator.createUri(ANSWER_DEFAULT_URL, response.getAnswerId());
-
+//        URI location = UriCreator.createUri(ANSWER_DEFAULT_URL, response.getAnswerId());
 //        return ResponseEntity.created(location).build();
-        return new ResponseEntity<>(new SingleResponseDto<>(location), HttpStatus.CREATED);
     }
 
     // 200 OK
-    @PatchMapping(value = "questions/{question-id}/answers/{answer-id}", produces = "application/json")  // 수정
-    public ResponseEntity patchAnswer(@PathVariable("question-id") @Positive long questionId,
-                                      @PathVariable("answer-id") @Positive long answerId,
+    @PatchMapping(value = "answers/{answer-id}", produces = "application/json")  // 수정
+    public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
                                       @Valid @RequestBody AnswerDto.patchAnswer patchAnswer) {
         patchAnswer.setAnswerId(answerId);
 
 //        Answer answer = answerMapper.answerPatchToAnswer(patchAnswer);
-        Answer answer = answerService.updateAnswer(answerMapper.answerPatchToAnswer(questionId, patchAnswer));
+        Answer answer = answerService.updateAnswer(answerMapper.answerPatchToAnswer(patchAnswer));
 
-        return new ResponseEntity<>(new SingleResponseDto<>(answer), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToAnswerResponse(answer)), HttpStatus.OK);
     }
 
     // 200 OK
     @GetMapping(value = "answers", produces = "application/json") // 모든 답변 조회
+//    @GetMapping("{question-id}/answers")  // 해당 질문에 관한 모든 답변 조회
     public ResponseEntity getAnswers() {
         List<Answer> answers = answerService.findAnswers();
 
@@ -71,7 +66,7 @@ public class AnswerController {
     }
 
     // 204 No Content
-    @DeleteMapping(value = "questions/{question-id}/answers/{answer-id}")  // 삭제
+    @DeleteMapping("answers/{answer-id}")  // 삭제
     public ResponseEntity deleteAnswer(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
 

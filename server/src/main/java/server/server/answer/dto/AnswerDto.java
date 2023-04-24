@@ -3,6 +3,7 @@ package server.server.answer.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 public class AnswerDto {
@@ -11,6 +12,10 @@ public class AnswerDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class postAnswer {
+        @Positive
+        private long questionId;
+        @Positive
+        private long userId;
         @NotBlank(message = "내용을 적어주세요.")
         private String content;
     }
@@ -20,7 +25,6 @@ public class AnswerDto {
     @AllArgsConstructor
     public static class patchAnswer {
         private long answerId;
-        private long questionId;
         @NotBlank(message = "내용을 적어주세요.")
         private String content;
     }

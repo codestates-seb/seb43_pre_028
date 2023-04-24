@@ -20,11 +20,11 @@ import javax.persistence.*;
         @Column(nullable = false)
         private Boolean answerVoteStatus;  // defult == false
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "ANSWER_ID")
         private Answer answer;
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "USER_ID")
         private User user;
     }

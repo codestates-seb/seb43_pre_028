@@ -28,7 +28,7 @@ public class Answer {
     @Column(nullable = false)
     private long votecount = 0;  // 투표 수
 
-    @Column
+    @Column(nullable = false)
     private Boolean choose = false;  // 채택
 
     @Column
@@ -37,11 +37,11 @@ public class Answer {
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();  // 수정 시간
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
 
