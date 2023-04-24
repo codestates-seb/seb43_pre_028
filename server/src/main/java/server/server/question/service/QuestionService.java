@@ -7,9 +7,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import server.server.answer.repository.AnswerRepository;
+import server.server.exception.BusinessLogicException;
+import server.server.exception.ExceptionCode;
 import server.server.question.entity.Question;
-import server.server.question.exception.BusinessLogicException;
-import server.server.question.exception.ExceptionCode;
 import server.server.question.repository.QuestionRepository;
 import server.server.user.service.UserService;
 

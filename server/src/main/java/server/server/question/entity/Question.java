@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.answer.entity.Answer;
-import server.server.answer.entity.Answer;
 import server.server.question.audit.QuestionAuditable;
 import server.server.questionVote.entity.QuestionVote;
 import server.server.user.entity.User;
@@ -18,6 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "QUESTION")
 public class Question extends QuestionAuditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Question extends QuestionAuditable {
     @Column(nullable = false)
     private int vote;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
     private List<Answer> answers = new ArrayList<>();
     //멤버//
     private int questionVoteCount;
@@ -57,9 +57,6 @@ public class Question extends QuestionAuditable {
     @ManyToOne //회원과 질문들은 일대 다
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
-    private List<Answer> answers = new ArrayList<>();
 
     public void setUser(User user) {
         this.user = user;
