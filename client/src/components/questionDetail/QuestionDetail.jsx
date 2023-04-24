@@ -1,17 +1,13 @@
-import dummy from '../../data/dummy';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { VoteUpIcon, VoteDownIcon } from '../Icons';
 import Texteditor from './TextEditor';
 
-// 질문 제목을 렌더링하는 컴포넌트
-function Title() {
-  return <div className="text-2xl">{dummy[0].title}</div>;
-}
-
 // 질문이 생성된 날짜, 수정된 날짜, 조회수를 렌더링하는 컴포넌트
-function Days() {
+function Days({ data }) {
   const today = new Date(); // 오늘 날짜
-  const created = new Date(dummy[0].createdAt); // 질문 생성 날짜
-  const modified = new Date(dummy[0].modifiedAt); // 질문 수정 날짜
+  const created = new Date(data.createdAt); // 질문 생성 날짜
+  const modified = new Date(data.modifiedAt); // 질문 수정 날짜
 
   // 각 날짜의 차이를 일 수로 계산
   const daysSinceCreated = Math.floor((today - created) / (1000 * 60 * 60 * 24));
@@ -24,7 +20,7 @@ function Days() {
       <span className="font-light"> &nbsp;&nbsp;&nbsp;Modified </span>
       {daysSinceModified} days ago
       <span className="font-light"> &nbsp;&nbsp;&nbsp;Viewed </span>
-      {dummy[0].views} times
+      {data.views} times
     </div>
   );
 }
@@ -91,13 +87,33 @@ function User({ data }) {
     </div>
   );
 }
-
-// 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
 export default function QuestionDetail() {
+  const url = 'https://6eba420e-68d0-40ee-8655-1b6266b1c756.mock.pstmn.io/questions';
+
+  const [dummy, setDummy] = useState({
+    title: '',
+    createdAt: '',
+    modifiedAt: '',
+    views: '',
+    content: '',
+    answer: [],
+  });
+
+  useEffect(() => {
+    axios
+      .get(`${url}/123`)
+      .then(response => {
+        setDummy(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+  // 질문과 답변의 상세 페이지를 렌더링하는 컴포넌트
   return (
     <section className="flex w-full flex-col pl-6">
       <div className="flex w-full justify-between">
-        <Title />
+        <div className="text-2xl">{dummy.title}</div>
         <button
           type="button"
           className="flex text-sm font-light bg-[#1e95ff] hover:bg-[#0074CC] text-white rounded-[4px] p-2"
@@ -105,22 +121,22 @@ export default function QuestionDetail() {
           Ask Question
         </button>
       </div>
-      <Days />
+      <Days data={dummy} />
       <div className="flex mt-4 w-full">
         <div className="mr-4 flex-shrink-0">
-          <Voting data={dummy[0]} />
+          <Voting data={dummy} />
         </div>
         <div className="break-all">
-          {dummy[0].content}
+          {dummy.content}
           <div className="flex mt-10 justify-between">
             <Edit className="mr-2" />
-            <User data={dummy[0]} />
+            <User data={dummy} />
           </div>
         </div>
       </div>
-      <div className="text-xl mt-10">{dummy[0].answer.length} Answers</div>
+      <div className="text-xl mt-10">{dummy.answer.length} Answers</div>
       <div className="flex flex-col mt-4">
-        {dummy[0].answer.map(answer => (
+        {dummy.answer.map(answer => (
           <div
             key={Math.random().toString(36).substring(2, 9)}
             className="flex pb-5 mt-5 mb-10 border-b-2 border-[#E3E6E8] border-solid"
