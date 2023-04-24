@@ -17,7 +17,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "QUESTION")
 public class Question extends QuestionAuditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,18 +35,15 @@ public class Question extends QuestionAuditable {
     private LocalDateTime modifiedAt = LocalDateTime.now() ;
 
     @Column(nullable = false)
-    private int viewCount;
-
-    @Column(nullable = false)
-    private int vote;
+    private int viewCount; //조회수 Count
 
     @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
     private List<Answer> answers = new ArrayList<>();
     //멤버//
-    private int questionVoteCount;
+    private int questionVoteCount; //투표수카운트
 
     @OneToMany(mappedBy = "question")
-    private List<QuestionVote> questionVotes = new ArrayList<>();
+    private List<QuestionVote> questionVotes = new ArrayList<>(); //투표
 
 
     //답변 개수 추가
@@ -55,15 +51,23 @@ public class Question extends QuestionAuditable {
     private int answerCount;
 
     @ManyToOne //회원과 질문들은 일대 다
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public void setUser(User user) {
+
         this.user = user;
+        if(!this.user.getQuestions().contains(this)){
+            this.user.getQuestions().add(this);
+        }
     }
 
     public void setAnswer(Answer answer){
+
         this.answers.add(answer);
+        if(answer.getQuestion() != this){
+            answer.setQuestion(this);
+        }
     }
 
     public void setQuestionVotes(List<QuestionVote> questionVotes) {

@@ -25,7 +25,7 @@ public class QuestionVoteController {
         this.mapper = mapper;
     }
 
-    @PostMapping("/{question-id}")
+    @PostMapping("/{question-id}/question-vote")
     public ResponseEntity postQuestion(@PathVariable("question-id") long questionId,
                                        @RequestBody QuestionVoteDto.PostDto postQuestionVote){
 
@@ -40,7 +40,7 @@ public class QuestionVoteController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/{question-vote-id}/vote")
+    @DeleteMapping("/{question-vote-id}/question-vote")
     public ResponseEntity deleteQuestionVote(@PathVariable("question-vote-id") @Positive long questionVoteId){
         questionVoteService.deleteQuestionVote(questionVoteId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.answer.entity.Answer;
+import server.server.answervote.entity.AnswerVote;
 import server.server.audit.BaseEntity;
+import server.server.question.entity.Question;
+import server.server.questionVote.entity.QuestionVote;
 
 
 import javax.persistence.*;
@@ -36,6 +39,7 @@ public class User extends BaseEntity {
     @Column(nullable = false,columnDefinition = "TEXT")
     private String password;
 
+
     @Column(nullable = false)
     private String image = "https://mblogthumb-phinf.pstatic.net/MjAyMDA2MTBfMTY1/MDAxNTkxNzQ2ODcyOTI2.Yw5WjjU3IuItPtqbegrIBJr3TSDMd_OPhQ2Nw-0-0ksg.8WgVjtB0fy0RCv0XhhUOOWt90Kz_394Zzb6xPjG6I8gg.PNG.lamute/user.png?type=w800";
 
@@ -64,10 +68,20 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<AnswerVote> answerVotes = new ArrayList<>();
+
 //    public List<String> getRoleList(){
 //        if(this.roles.length()>0){
 //            return Arrays.asList(this.roles.split(","));
 //        }
 //        return new ArrayList<>();
 //    }
+
+    @OneToMany(mappedBy = "user")
+    private List<Question> questions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<QuestionVote> questionVotes = new ArrayList<>();
+
 }

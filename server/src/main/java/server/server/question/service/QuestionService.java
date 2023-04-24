@@ -11,6 +11,7 @@ import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
 import server.server.question.entity.Question;
 import server.server.question.repository.QuestionRepository;
+import server.server.user.entity.User;
 import server.server.user.service.UserService;
 
 import javax.servlet.http.Cookie;
@@ -43,6 +44,9 @@ public class QuestionService {
         // 로그인을 안하면 로그인 하라고 해야함...
 
         // 로그인을 하면 생성
+
+        //회원 존재 여부
+
         return questionRepository.save(question);
 
     }
