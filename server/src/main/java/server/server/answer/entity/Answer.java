@@ -3,6 +3,7 @@ package server.server.answer.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import server.server.question.entity.Question;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,4 +25,8 @@ public class Answer {
 
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();  // 수정 시간
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import server.server.answer.mapper.AnswerMapper;
 import server.server.dto.MultiResponseDto;
 import server.server.dto.SingleResponseDto;
 import server.server.question.dto.QuestionDto;
@@ -27,10 +28,14 @@ public class QuestionController {
     private final static String QUESTION_DEFAULT_URL = "/questions";
     private final QuestionService questionService;
     private final QuestionMapper mapper;
+    private final AnswerMapper answerMapper;
 
-    public QuestionController(QuestionService questionService, QuestionMapper mapper) {
+    public QuestionController(QuestionService questionService,
+                              QuestionMapper mapper,
+                              AnswerMapper answerMapper) {
         this.questionService = questionService;
         this.mapper = mapper;
+        this.answerMapper = answerMapper;
     }
 
     // 질문 생성
@@ -54,8 +59,11 @@ public class QuestionController {
         patchQuestion.setQuestionId(questionId);
 
         Question question = questionService.updateQuestion(mapper.questionPatchToQuestion(patchQuestion));
+        QuestionDto.Response response = mapper.questionToResponseQuestion(question);
 
-        return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseQuestion(question)), HttpStatus.OK);
+        URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, question.getQuestionId());
+
+        return ResponseEntity.status(HttpStatus.OK).location(location).body(response);
     }
 
     // 질문 조회(한 개만 선택)
@@ -68,8 +76,8 @@ public class QuestionController {
 
     //질문 전체 조회
     @GetMapping
-    public ResponseEntity getQuestions(@Positive @RequestParam(value = "page", defaultValue = "1") int page,
-                                       @Positive @RequestParam(value = "size", defaultValue = "5") int size) {
+    public ResponseEntity getQuestions(@Positive @RequestParam(value = "page") int page, //, defaultValue = "1"
+                                       @Positive @RequestParam(value = "size") int size) {
         Page<Question> pageQuestions= questionService.findQuestions(page-1, size);
         List<Question> questions = pageQuestions.getContent();
 
