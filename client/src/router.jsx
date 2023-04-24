@@ -86,7 +86,9 @@ const tagsRouter = [
     path: '/tags',
     label: 'tag 페이지',
     element: (
-      <h1 className="w-full flex justify-center items-center text-2xl">Tag Page</h1>
+      <h1 className="w-full h-[70vh] flex justify-center items-center text-2xl">
+        Tag Page
+      </h1>
     ),
     layoutInfo: {
       withNav: true,
@@ -102,7 +104,9 @@ const usersRouter = [
     path: '/users',
     label: 'users 페이지',
     element: (
-      <h1 className="w-full flex justify-center items-center text-2xl">Users Page</h1>
+      <h1 className="w-full h-[70vh] flex justify-center items-center text-2xl">
+        Users Page
+      </h1>
     ),
     layoutInfo: {
       withNav: true,
@@ -118,7 +122,9 @@ const companiesRouter = [
     path: '/companies',
     label: '회사 페이지',
     element: (
-      <h1 className="w-full flex justify-center items-center text-2xl">Companies Page</h1>
+      <h1 className="w-full h-[70vh] flex justify-center items-center text-2xl">
+        Companies Page
+      </h1>
     ),
     layoutInfo: {
       withNav: true,

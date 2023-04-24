@@ -1,0 +1,196 @@
+{
+  "questions": [
+    {
+      "questionId": "1asdf",
+      "title": "Why is the page refreshed after javascript post request?",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "I need the page should not be refreshed because my score modal closes and the game restarts."
+      },
+      "views": 8,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone1",
+      "userImage": "https://www.gravatar.com/avatar/1b375c795476432e64d4433a651d2804?s=32&d=identicon&r=PG",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-04-25T00:43:02.9797101"
+    },
+    {
+      "questionId": "2asdf",
+      "title": "How to access downloaded OSM data",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "Im working with js/node. Following the instructions at You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm I have downloaded a 670MB file representing nodes in a geographic area. When I open it in vim it looks like xml to me."
+      },
+      "views": 7,
+      "votes": 4,
+      "answers": 6,
+      "userName": "someone2",
+      "userImage": "https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32",
+      "askedCount": 200,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-21T00:43:02.9797101"
+    },
+    {
+      "questionId": "3asdf",
+      "title": "AWS Amplify Pub/Sub entering disconnect state without any other logs",
+      "content": {
+        "problem": "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.",
+        "tried": "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it."
+      },
+      "views": 4,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone3",
+      "userImage": "https://i.stack.imgur.com/ufGay.png?s=32&g=1",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-26T00:43:02.9797101"
+    },
+    {
+      "questionId": "4asdf",
+      "title": "Why is the page refreshed after javascript post request?",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "I need the page should not be refreshed because my score modal closes and the game restarts."
+      },
+      "views": 8,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone1",
+      "userImage": "https://www.gravatar.com/avatar/1b375c795476432e64d4433a651d2804?s=32&d=identicon&r=PG",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-04-25T00:43:02.9797101"
+    },
+    {
+      "questionId": "5asdf",
+      "title": "How to access downloaded OSM data",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "Im working with js/node. Following the instructions at You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm I have downloaded a 670MB file representing nodes in a geographic area. When I open it in vim it looks like xml to me."
+      },
+      "views": 7,
+      "votes": 4,
+      "answers": 6,
+      "userName": "someone2",
+      "userImage": "https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32",
+      "askedCount": 200,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-21T00:43:02.9797101"
+    },
+    {
+      "questionId": "6asdf",
+      "title": "AWS Amplify Pub/Sub entering disconnect state without any other logs",
+      "content": {
+        "problem": "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.",
+        "tried": "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it."
+      },
+      "views": 4,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone3",
+      "userImage": "https://i.stack.imgur.com/ufGay.png?s=32&g=1",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-26T00:43:02.9797101"
+    },
+    {
+      "questionId": "7asdf",
+      "title": "Why is the page refreshed after javascript post request?",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "I need the page should not be refreshed because my score modal closes and the game restarts."
+      },
+      "views": 8,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone1",
+      "userImage": "https://www.gravatar.com/avatar/1b375c795476432e64d4433a651d2804?s=32&d=identicon&r=PG",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-04-25T00:43:02.9797101"
+    },
+    {
+      "questionId": "8asdf",
+      "title": "How to access downloaded OSM data",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "Im working with js/node. Following the instructions at You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm I have downloaded a 670MB file representing nodes in a geographic area. When I open it in vim it looks like xml to me."
+      },
+      "views": 7,
+      "votes": 4,
+      "answers": 6,
+      "userName": "someone2",
+      "userImage": "https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32",
+      "askedCount": 200,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-21T00:43:02.9797101"
+    },
+    {
+      "questionId": "9asdf",
+      "title": "AWS Amplify Pub/Sub entering disconnect state without any other logs",
+      "content": {
+        "problem": "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.",
+        "tried": "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it."
+      },
+      "views": 4,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone3",
+      "userImage": "https://i.stack.imgur.com/ufGay.png?s=32&g=1",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-26T00:43:02.9797101"
+    },
+    {
+      "questionId": "10asdf",
+      "title": "Why is the page refreshed after javascript post request?",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "I need the page should not be refreshed because my score modal closes and the game restarts."
+      },
+      "views": 8,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone1",
+      "userImage": "https://www.gravatar.com/avatar/1b375c795476432e64d4433a651d2804?s=32&d=identicon&r=PG",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-04-25T00:43:02.9797101"
+    },
+    {
+      "questionId": "11asdf",
+      "title": "How to access downloaded OSM data",
+      "content": {
+        "problem": "When I send post request JSON to server username and score page being refreshed. Patch request does not have this problem page not being refreshed.",
+        "tried": "Im working with js/node. Following the instructions at You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm I have downloaded a 670MB file representing nodes in a geographic area. When I open it in vim it looks like xml to me."
+      },
+      "views": 7,
+      "votes": 4,
+      "answers": 6,
+      "userName": "someone2",
+      "userImage": "https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32",
+      "askedCount": 200,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-21T00:43:02.9797101"
+    },
+    {
+      "questionId": "12asdf",
+      "title": "AWS Amplify Pub/Sub entering disconnect state without any other logs",
+      "content": {
+        "problem": "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.",
+        "tried": "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it."
+      },
+      "views": 4,
+      "votes": 1,
+      "answers": 2,
+      "userName": "someone3",
+      "userImage": "https://i.stack.imgur.com/ufGay.png?s=32&g=1",
+      "askedCount": 382,
+      "createAt": "have to compute",
+      "modifiedAt": "2023-03-26T00:43:02.9797101"
+    }
+  ]
+}
