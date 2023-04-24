@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.answer.dto.AnswerDto;
+import server.server.user.entity.User;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +22,15 @@ public class QuestionDto {
         private String contentProblem;
         @NotBlank(message = "내용을 입력해주세요.")
         private String contentTried;
+        @Positive
+        private Long userId;
+
+        public User getUser() {
+            User user = new User();
+            user.setUserId(userId);
+
+            return user;
+        }
 
     }
 
@@ -42,6 +53,7 @@ public class QuestionDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Response{
+        private  long userId;
         private long questionId;
         private String title;
         private String contentProblem;

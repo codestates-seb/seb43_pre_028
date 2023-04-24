@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Question extends QuestionAuditable {
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
@@ -33,6 +33,9 @@ public class Question extends QuestionAuditable {
 
     @Column(nullable = false)
     private LocalDateTime modifiedAt = LocalDateTime.now() ;
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false)
     private int viewCount; //조회수 Count
@@ -68,6 +71,14 @@ public class Question extends QuestionAuditable {
         if(answer.getQuestion() != this){
             answer.setQuestion(this);
         }
+    }
+
+    public String getDisplayName(){
+        return user.getDisplayName();
+    }
+
+    public long getUserId(){
+        return user.getUserId();
     }
 
     public void setQuestionVotes(List<QuestionVote> questionVotes) {
