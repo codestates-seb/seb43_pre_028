@@ -22,11 +22,11 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long answerId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;  // 답변 내용
 
     @Column(nullable = false)
-    private long votecount;  // 투표 수
+    private long votecount = 0;  // 투표 수
 
     @Column
     private Boolean choose = false;  // 채택

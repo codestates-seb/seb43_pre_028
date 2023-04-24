@@ -9,35 +9,39 @@ import server.server.answer.entity.Answer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-20T15:43:39+0900",
+    date = "2023-04-24T15:03:35+0900",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 11.0.17 (Azul Systems, Inc.)"
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {
 
     @Override
-    public Answer answerPostToAnswer(AnswerDto.postAnswer postAnswer) {
+    public Answer answerPostToAnswer(long questionId, AnswerDto.postAnswer postAnswer) {
         if ( postAnswer == null ) {
             return null;
         }
 
         Answer answer = new Answer();
 
-        answer.setContent( postAnswer.getContent() );
+        if ( postAnswer != null ) {
+            answer.setContent( postAnswer.getContent() );
+        }
 
         return answer;
     }
 
     @Override
-    public Answer answerPatchToAnswer(AnswerDto.patchAnswer patchAnswer) {
+    public Answer answerPatchToAnswer(long questionId, AnswerDto.patchAnswer patchAnswer) {
         if ( patchAnswer == null ) {
             return null;
         }
 
         Answer answer = new Answer();
 
-        answer.setAnswerId( patchAnswer.getAnswerId() );
-        answer.setContent( patchAnswer.getContent() );
+        if ( patchAnswer != null ) {
+            answer.setAnswerId( patchAnswer.getAnswerId() );
+            answer.setContent( patchAnswer.getContent() );
+        }
 
         return answer;
     }
@@ -48,12 +52,16 @@ public class AnswerMapperImpl implements AnswerMapper {
             return null;
         }
 
-        AnswerDto.responseAnswer responseAnswer = new AnswerDto.responseAnswer();
+        AnswerDto.responseAnswer.responseAnswerBuilder responseAnswer = AnswerDto.responseAnswer.builder();
 
-        responseAnswer.setAnswerId( answer.getAnswerId() );
-        responseAnswer.setContent( answer.getContent() );
+        responseAnswer.answerId( answer.getAnswerId() );
+        responseAnswer.content( answer.getContent() );
+        responseAnswer.votecount( answer.getVotecount() );
+        responseAnswer.choose( answer.getChoose() );
+        responseAnswer.createdAt( answer.getCreatedAt() );
+        responseAnswer.modifiedAt( answer.getModifiedAt() );
 
-        return responseAnswer;
+        return responseAnswer.build();
     }
 
     @Override

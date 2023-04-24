@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
+import server.server.answer.dto.AnswerDto;
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-20T15:43:40+0900",
+    date = "2023-04-24T15:03:34+0900",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 11.0.17 (Azul Systems, Inc.)"
 )
 @Component
@@ -60,10 +61,9 @@ public class QuestionMapperImpl implements QuestionMapper {
         response.setTitle( question.getTitle() );
         response.setContentProblem( question.getContentProblem() );
         response.setContentTried( question.getContentTried() );
-        response.setCreatedAt( question.getCreatedAt() );
+        response.setViewCount( question.getViewCount() );
+        response.setQuestionVoteCount( question.getQuestionVoteCount() );
         response.setModifiedAt( question.getModifiedAt() );
-        response.setViews( question.getViews() );
-        response.setVote( question.getVote() );
 
         return response;
     }
@@ -80,5 +80,24 @@ public class QuestionMapperImpl implements QuestionMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public QuestionDto.AnswerResponse<AnswerDto.responseAnswer> responseToAnswerResponseDto(List<AnswerDto.responseAnswer> data, int answersCount) {
+        if ( data == null ) {
+            return null;
+        }
+
+        List<AnswerDto.responseAnswer> data1 = null;
+        List<AnswerDto.responseAnswer> list = data;
+        if ( list != null ) {
+            data1 = new ArrayList<AnswerDto.responseAnswer>( list );
+        }
+        int answersCount1 = 0;
+        answersCount1 = answersCount;
+
+        QuestionDto.AnswerResponse<AnswerDto.responseAnswer> answerResponse = new QuestionDto.AnswerResponse<AnswerDto.responseAnswer>( data1, answersCount1 );
+
+        return answerResponse;
     }
 }
