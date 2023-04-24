@@ -7,8 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import server.server.answer.dto.AnswerDto;
-import server.server.answer.entity.Answer;
 import server.server.answer.mapper.AnswerMapper;
 import server.server.dto.MultiResponseDto;
 import server.server.dto.SingleResponseDto;
@@ -16,12 +14,9 @@ import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
 import server.server.question.mapper.QuestionMapper;
 import server.server.question.service.QuestionService;
-import server.server.user.entity.User;
 import server.server.user.service.UserService;
 import server.server.utils.UriCreator;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
@@ -48,14 +43,11 @@ public class QuestionController {
     // 질문 생성
     @PostMapping
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post postQuestion){
-
         Question question = mapper.postDtoToQuestion(postQuestion);
         Question createdQuestion = questionService.creteQuestion(question);
 
+
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseDto(createdQuestion)), HttpStatus.CREATED);
-
-
-
     }
 
     //질문 수정
@@ -82,8 +74,9 @@ public class QuestionController {
         QuestionDto.Response response = mapper.questionToResponseDto(question);
 
         //questionService.viewCountValidation(question, servletRequest, servletResponse);
-
         //return new ResponseEntity<>(response, HttpStatus.OK);
+
+
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 

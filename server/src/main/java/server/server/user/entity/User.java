@@ -84,4 +84,5 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<QuestionVote> questionVotes = new ArrayList<>();
 
+
 }
