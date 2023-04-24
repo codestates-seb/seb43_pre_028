@@ -1,4 +1,4 @@
-package server.server.utils;
+package server.server.question.utils;
 
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -13,11 +13,11 @@ public class UriCreator {
                 .toUri();
     }
 
-    public static URI createUri(String defaultUrl, long answerId, long answerVoteId){
+    public static URI createUri(String defaultUrl, long questionId, long questionVoteId) {
         return UriComponentsBuilder
                 .newInstance()
-                .path(defaultUrl + "/{answer-id}/answer-vote/{answer-vote-id}")
-                .buildAndExpand(answerId, answerVoteId)
+                .path(defaultUrl + "/{question-id}/vote/{question-vote-id}")
+                .buildAndExpand(questionId, questionVoteId)
                 .toUri();
     }
 }

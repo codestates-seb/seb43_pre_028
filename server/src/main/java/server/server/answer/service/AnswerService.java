@@ -1,16 +1,17 @@
 package server.server.answer.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import server.server.answer.entity.Answer;
-import server.server.answer.exception.BusinessLogicException;
-import server.server.answer.exception.ExceptionCode;
 import server.server.answer.repository.AnswerRepository;
 
 import org.springframework.transaction.annotation.Transactional;
+import server.server.exception.BusinessLogicException;
+import server.server.exception.ExceptionCode;
+import server.server.question.entity.Question;
+import server.server.question.service.QuestionService;
+import server.server.user.entity.User;
+import server.server.user.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,12 +22,22 @@ import java.util.Optional;
 @Service
 public class AnswerService {
     private AnswerRepository answerRepository;
+    private UserService userService;
+    private QuestionService questionService;
 
-    public AnswerService(AnswerRepository answerRepository) {
+    public AnswerService(AnswerRepository answerRepository, UserService userService, QuestionService questionService) {
         this.answerRepository = answerRepository;
+        this.userService = userService;
+        this.questionService = questionService;
     }
 
     public Answer createAnswer(Answer answer) {  // 생성
+//        Question question = questionService.findVerifiedQuestion(answer.getQuestion().getQuestionId());
+//        User user = userService.findVerifiedUser(answer.getUser().getUserId());
+//
+//        answer.setQuestion(question);
+//        answer.setUser(user);
+
         return answerRepository.save(answer);
     }
 
@@ -50,7 +61,7 @@ public class AnswerService {
     }
 
     public Answer findVerifiedAnswer(long answerId) {  // 해당 답변글의 존재 유무 체크
-        Answer answer = answerRepository.findById(answerId)
+        Answer answer = answerRepository.findByAnswerId(answerId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
 
         return answer;

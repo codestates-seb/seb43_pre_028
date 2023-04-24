@@ -7,5 +7,5 @@ import server.server.answer.entity.Answer;
 import java.util.Optional;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
-    Optional<Answer> findByContent(String content);
+    Optional<Answer> findByAnswerId(long answerId);
 }

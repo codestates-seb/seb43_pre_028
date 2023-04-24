@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,18 +27,80 @@ public class Question {
     @Column(nullable = false, length = 5000)
     private String contentTried;
 
-    @Column
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    @Column(nullable = false, name = "LAST_MODIFIED_AT")
+    @Column(nullable = false)
     private LocalDateTime modifiedAt = LocalDateTime.now() ;
 
     @Column(nullable = false)
-    private int views;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false)
-    private int vote;
-    //멤버//
+    private int viewCount; //조회수 Count
 
-    //답변
+    @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
+    private List<Answer> answers = new ArrayList<>();
+    //멤버//
+    private int questionVoteCount; //투표수카운트
+
+    @OneToMany(mappedBy = "question")
+    private List<QuestionVote> questionVotes = new ArrayList<>(); //투표
+
+
+    //답변 개수 추가
+    @Transient //컬럼에서 제거되기 위해 사용
+    private int answerCount;
+
+    @ManyToOne //회원과 질문들은 일대 다
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public void setUser(User user) {
+
+        this.user = user;
+        if(!this.user.getQuestions().contains(this)){
+            this.user.getQuestions().add(this);
+        }
+    }
+
+    public void setAnswer(Answer answer){
+
+        this.answers.add(answer);
+        if(answer.getQuestion() != this){
+            answer.setQuestion(this);
+        }
+    }
+
+    public String getDisplayName(){
+        return user.getDisplayName();
+    }
+
+    public long getUserId(){
+        return user.getUserId();
+    }
+
+    public void setQuestionVotes(List<QuestionVote> questionVotes) {
+        this.questionVotes = questionVotes;
+    }
+
+    public int getAnswerCount() {
+        answerCount = answers.size();
+        return answerCount;
+    }
+
+    public int getQuestionVoteCount() {
+        questionVoteCount = questionVotes.stream()
+                .mapToInt(questionVote -> questionVote.getQuestionVoteStatus() ? 1 : -1)
+                .sum();
+        return questionVoteCount;
+    }
+
+    public void addViewCount() {
+        this.viewCount++;
+    }
+
+    public void setQuestionVote(QuestionVote questionVote) {
+        this.questionVotes.add(questionVote);
+        if(questionVote.getQuestion() != this){
+            questionVote.setQuestion(this);
+        }
+    }
 }
