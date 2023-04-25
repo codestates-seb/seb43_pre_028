@@ -1,31 +1,33 @@
 // questionDetailSlice.js
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchQuestion } from '../api/questionDetail';
 
-export const fetchQuestion = createAsyncThunk('question/fetchQuestion', async id => {
-  const url = `https://6eba420e-68d0-40ee-8655-1b6266b1c756.mock.pstmn.io/questions/${id}`;
-  const response = await axios.get(url);
-  return response.data;
-});
+const initialState = {
+  status: 'loading',
+  question: {},
+};
 
 const questionDetailSlice = createSlice({
   name: 'questionDetail',
-  initialState: {
-    title: '',
-    createdAt: '',
-    modifiedAt: '',
-    views: '',
-    content: '',
-    answer: [],
-  },
+  initialState,
   reducers: {
     setQuestion: (state, action) => {
       return action.payload;
     },
   },
   extraReducers: builder => {
+    // builder.addCase(fetchQuestion.fulfilled, (state, action) => {
+    //   return action.payload;
+    // });
+    builder.addCase(fetchQuestion.pending, (state, action) => {
+      state.status = 'loading';
+    });
     builder.addCase(fetchQuestion.fulfilled, (state, action) => {
-      return action.payload;
+      state.status = 'succeed';
+      state.question = action.payload;
+    });
+    builder.addCase(fetchQuestion.rejected, (state, action) => {
+      state.status = 'failed';
     });
   },
 });
