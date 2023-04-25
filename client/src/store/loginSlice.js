@@ -1,43 +1,39 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-export const loginAPI = createAsyncThunk('login', async ({ email, pw, BASE_URL }) => {
-  const loginRes = await fetch(`${BASE_URL}/user`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      credentials: true,
-    },
-    body: JSON.stringify({ email, pw }),
-  }).then(res => res.json());
-  // .then(data => console.log(data));
-  return loginRes;
-});
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchLogin } from '../api/login';
 
 const loginSlice = createSlice({
   name: 'loginSlice',
-  initialState: { email: '', pw: '', token: '', state: '' },
+  initialState: { email: '', pw: '', token: '', state: false },
   reducers: {
     setEmail: (state, action) => {
-      state.email = action.payload.email;
+      state.email = action.payload;
     },
     setPW: (state, action) => {
-      state.pw = action.payload.pw;
+      state.pw = action.payload;
+    },
+    setToken: (state, action) => {
+      state.token = action.payload;
     },
   },
   extraReducers: builder => {
-    builder.addCase(loginAPI.pending, (state, action) => {
-      // 대기 상태일 때
+    // builder.addCase(loginAPI.pending, (state, action) => {
+    //   // 대기 상태일 때
+    // });
+    builder.addCase(fetchLogin.fulfilled, (state, action) => {
+      // state.token = action.payload;
+      // sessionStorage.setItem('token', state.token);
+      // sessionStorage.getItem('token')
+      // 여기서? token을? 다루나?
+      state.state = true;
     });
-    builder.addCase(loginAPI.fulfilled, (state, action) => {
-      state.token = action.payload;
-      state.state = 'success';
-    });
-    builder.addCase(loginAPI.rejected, (state, action) => {
+    builder.addCase(fetchLogin.rejected, (state, action) => {
       // state.token = '';
-      // state.state = 'fail';
+      state.state = false;
     });
   },
 });
 
+// 201 'create'
+
 export default loginSlice;
-export const { setEmail, setPW } = loginSlice.actions;
+export const { setEmail, setPW, setToken } = loginSlice.actions;
