@@ -1,7 +1,11 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-function TextEdit() {
+function TextEdit({ quillText, setQuillText }) {
+  // 입력 값 받아오기
+  const handleChange = (content, delta, source, editor) => {
+    setQuillText(content);
+  };
   const modules = {
     toolbar: {
       container: [
@@ -13,9 +17,10 @@ function TextEdit() {
       ],
     },
   };
+
   return (
     <div>
-      <ReactQuill modules={modules} />
+      <ReactQuill modules={modules} value={quillText} onChange={handleChange} />
     </div>
   );
 }
