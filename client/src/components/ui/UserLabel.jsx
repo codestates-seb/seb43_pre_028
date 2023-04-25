@@ -2,10 +2,15 @@
 // TODO : 입력된 데이터 처리
 
 // * : 로그인과 회원가입의 인풋창 공통 속성 UI
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function UserLabel({ children, inputId, className, errorMsg, inputRef }) {
+function UserLabel({ children, inputId, className, errorMsg, inputRef, state }) {
   const [errorMessage, setErrorMessage] = useState('');
+  // useEffect(() => {
+  //   if (!state) {
+  //     setErrorMessage(errorMsg);
+  //   }
+  // }, [errorMsg, state]);
   return (
     <label htmlFor={inputId} className="flex flex-col my-1">
       {children}

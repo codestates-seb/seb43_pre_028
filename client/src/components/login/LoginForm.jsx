@@ -1,14 +1,19 @@
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import UserLabel from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
-import { loginAPI } from '../../store/loginSlice';
+import { fetchLogin } from '../../api/login';
 
 function LoginForm() {
-  const BASE_URL = 'localhost:8080';
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const emailRef = useRef(null);
   const pwRef = useRef(null);
+  const loginState = useSelector(state => {
+    return state.login.state;
+  });
+
   const onLoginHandler = async e => {
     e.preventDefault();
     const email = emailRef.current.value;
@@ -18,13 +23,16 @@ function LoginForm() {
     pwRef.current.value = '';
 
     // ! : 매게변수 전달할 때는 괄호로 감싸서 하나의 객체로 보내야 함.
-    dispatch(loginAPI({ email, pw, BASE_URL }));
-    // if (loginRes.ok) {
-    // 메인화면으로 redirect
-    // 유저정보 요청?? < 토큰으로?
-    // } else {
-    // 로그인 실패
-    // }
+    dispatch(fetchLogin({ email, pw }));
+    if (loginState) {
+      console.log('success');
+      // 토큰 저장
+      // 토큰으로 유저 정보 받아오기
+      // 메인화면으로 redirect
+      navigate('/');
+    } else {
+      // 로그인 실패
+    }
 
     // return axios
     //   .post('http://localhost:4000/login', { loginInfo, checkedKeepLogin })
@@ -40,6 +48,7 @@ function LoginForm() {
         errorMsg="The email is not a valid email address."
         className="w-60 h-8 mt-1"
         inputRef={emailRef}
+        state={loginState}
       >
         Email
       </UserLabel>
@@ -48,6 +57,7 @@ function LoginForm() {
         inputId="password"
         className="w-60 h-8 mt-1"
         inputRef={pwRef}
+        state={loginState}
       >
         <p className="flex justify-between items-end w-60">
           Password
