@@ -1,6 +1,6 @@
 import TextEditor from './TextEditor';
 
-function TriedInput() {
+function TriedInput({ setQuillText, quillText }) {
   return (
     <form className="max-w-7xl border-solid border-2 border-slate-400 mb-5 rounded-md p-8">
       <div>
@@ -13,7 +13,7 @@ function TriedInput() {
         </p>
       </div>
       <div>
-        <TextEditor />
+        <TextEditor setQuillText={setQuillText} quillText={quillText} />
       </div>
     </form>
   );
