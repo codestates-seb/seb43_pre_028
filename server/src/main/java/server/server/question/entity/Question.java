@@ -55,6 +55,7 @@ public class Question {
     @Transient //컬럼에서 제거되기 위해 사용
     private int answerCount;
 
+    @JsonIgnore
     @ManyToOne //회원과 질문들은 일대 다
     @JoinColumn(name = "user_id")
     private User user;

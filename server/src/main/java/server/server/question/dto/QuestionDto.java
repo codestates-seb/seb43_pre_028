@@ -83,10 +83,7 @@ public class QuestionDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private String image;
-        private String displayName;
-
-
-
+        private String userName;
     }
 
     @Getter
