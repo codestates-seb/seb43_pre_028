@@ -2,7 +2,7 @@ import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { VoteUpIcon, VoteDownIcon } from '../Icons';
 import Texteditor from './TextEditor';
-import { selectQuestion, fetchQuestion } from '../../store/questionSlice';
+import { selectQuestion, fetchQuestion } from '../../store/questionDetailSlice';
 
 // 질문이 생성된 날짜, 수정된 날짜, 조회수를 렌더링하는 컴포넌트
 function Days({ data }) {
