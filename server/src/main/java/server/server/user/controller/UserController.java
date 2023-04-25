@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import server.server.dto.SingleResponseDto;
-import server.server.exception.BusinessLogicException;
-import server.server.exception.ExceptionCode;
 import server.server.user.dto.UserPatchDto;
 import server.server.user.dto.UserPostDto;
 import server.server.user.entity.User;
@@ -17,8 +15,8 @@ import server.server.user.repository.UserRepository;
 import server.server.user.service.UserService;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/v1")
 @Validated

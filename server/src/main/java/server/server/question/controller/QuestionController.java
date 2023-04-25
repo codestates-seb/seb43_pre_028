@@ -1,14 +1,14 @@
 package server.server.question.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import server.server.answer.dto.AnswerDto;
 import server.server.answer.mapper.AnswerMapper;
-import server.server.dto.MultiResponseDto;
+import server.server.dto.SingleResponse;
 import server.server.dto.SingleResponseDto;
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
@@ -17,6 +17,8 @@ import server.server.question.service.QuestionService;
 import server.server.user.service.UserService;
 import server.server.utils.UriCreator;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
@@ -57,7 +59,7 @@ public class QuestionController {
 
         patchQuestion.setQuestionId(questionId);
 
-        Question question = questionService.updateQuestion(mapper.patchToQuestion(patchQuestion));
+        Question question = questionService.updateQuestion(mapper.patchDtoToQuestion(patchQuestion));
         QuestionDto.Response response = mapper.questionToResponseDto(question);
 
         URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, question.getQuestionId());
@@ -66,28 +68,37 @@ public class QuestionController {
         return new ResponseEntity<>(new SingleResponseDto<>(location), HttpStatus.OK);
     }
 
-
-    // 질문 조회(한 개만 선택)
+    //질문 조회 시 질문 조회수를 처리
     @GetMapping("/{question-id}")
-    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive long questionId){
+    public ResponseEntity getQuestion(@Positive @PathVariable("question-id") Long questionId,
+                                      HttpServletRequest servletRequest,
+                                      HttpServletResponse servletResponse) {
+        Question findQuestion = questionService.findQuestion(questionId);
+        QuestionDto.Response response = mapper.questionToResponseDto(findQuestion);
+
+        questionService.viewCountValidation(findQuestion, servletRequest, servletResponse);
+
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    //질문 조회 시 답변 조회를 처리
+    @GetMapping("/{question-id}/answers")
+    public ResponseEntity getAnswersByQuestionId(@Positive @PathVariable("question-id") Long questionId) {
         Question question = questionService.findQuestion(questionId);
-        QuestionDto.Response response = mapper.questionToResponseDto(question);
-
-        //questionService.viewCountValidation(question, servletRequest, servletResponse);
-        //return new ResponseEntity<>(response, HttpStatus.OK);
-
-
-        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
+        List<AnswerDto.responseAnswer> answers =
+                answerMapper.answersToResponseAnswers(question.getAnswers());
+        QuestionDto.AnswerResponse response =
+                mapper.responseToAnswerResponseDto(answers, answers.size());
+        return new ResponseEntity(
+                new SingleResponse<>(response), HttpStatus.OK);
     }
 
     //질문 전체 조회
     @GetMapping
-    public ResponseEntity getQuestions(@Positive @RequestParam(value = "page") int page, //, defaultValue = "1"
-                                       @Positive @RequestParam(value = "size") int size) {
-        Page<Question> pageQuestions= questionService.findQuestions(page-1, size);
-        List<Question> questions = pageQuestions.getContent();
+    public ResponseEntity getQuestions() {
+        List<Question> questions = questionService.findQuestions();
 
-        return new ResponseEntity<>(new MultiResponseDto<>(mapper.questionToResponseDtos(questions), pageQuestions), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(questions), HttpStatus.OK);
     }
 
     //질문 삭제

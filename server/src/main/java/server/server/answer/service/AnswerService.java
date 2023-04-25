@@ -8,9 +8,7 @@ import server.server.answer.repository.AnswerRepository;
 import org.springframework.transaction.annotation.Transactional;
 import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
-import server.server.question.entity.Question;
 import server.server.question.service.QuestionService;
-import server.server.user.entity.User;
 import server.server.user.service.UserService;
 
 import java.time.LocalDateTime;
@@ -22,22 +20,12 @@ import java.util.Optional;
 @Service
 public class AnswerService {
     private AnswerRepository answerRepository;
-    private UserService userService;
-    private QuestionService questionService;
 
-    public AnswerService(AnswerRepository answerRepository, UserService userService, QuestionService questionService) {
+    public AnswerService(AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
-        this.userService = userService;
-        this.questionService = questionService;
     }
 
     public Answer createAnswer(Answer answer) {  // 생성
-//        Question question = questionService.findVerifiedQuestion(answer.getQuestion().getQuestionId());
-//        User user = userService.findVerifiedUser(answer.getUser().getUserId());
-//
-//        answer.setQuestion(question);
-//        answer.setUser(user);
-
         return answerRepository.save(answer);
     }
 
@@ -53,6 +41,7 @@ public class AnswerService {
     }
 
     public List<Answer> findAnswers() {  // 모든 회원 조회
+
         return answerRepository.findAll();
     }
 

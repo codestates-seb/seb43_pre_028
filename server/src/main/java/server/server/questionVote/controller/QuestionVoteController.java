@@ -26,18 +26,24 @@ public class QuestionVoteController {
     }
 
     @PostMapping("/{question-id}/question-vote")
-    public ResponseEntity postQuestion(@PathVariable("question-id") long questionId,
+    public ResponseEntity postQuestionVote(@PathVariable("question-id") long questionId,
                                        @RequestBody QuestionVoteDto.PostDto postQuestionVote){
 
         postQuestionVote.setQuestionId(questionId);
-        QuestionVote questionVote = questionVoteService.creteQuestionVote(
-                mapper.questionVotePostQuestionVote(postQuestionVote));
+        postQuestionVote.setUserId(postQuestionVote.getUserId());
+
+        QuestionVote questionVote = questionVoteService.creteQuestionVote(mapper.questionVotePostQuestionVote(postQuestionVote));
+
+        long id = questionVote.getQuestionVoteId();
+
+        URI location = UriCreator.createUri(DEFAULT_URL, questionId, id);
 
 
-        URI location = UriCreator.createUri(DEFAULT_URL, questionId);
+        QuestionVoteDto.ResponseDto response = mapper.questionVoteToResponseQuestionVote(questionVote);
 
 
-        return ResponseEntity.created(location).build();
+
+        return ResponseEntity.created(location).body(response);
     }
 
     @DeleteMapping("/{question-vote-id}/question-vote")

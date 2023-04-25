@@ -1,8 +1,12 @@
 package server.server.question.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import server.server.answer.entity.Answer;
+import server.server.questionVote.entity.QuestionVote;
+import server.server.user.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,10 +26,10 @@ public class Question {
     private String title;
 
     @Column(nullable = false, length = 5000)
-    private String contentProblem;
+    private String problem;
 
     @Column(nullable = false, length = 5000)
-    private String contentTried;
+    private String tried;
 
     @Column(nullable = false)
     private LocalDateTime modifiedAt = LocalDateTime.now() ;
@@ -34,33 +38,58 @@ public class Question {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false)
-    private int viewCount; //조회수 Count
+    private int views; //조회수
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "question")
+    private List<QuestionVote> vote = new ArrayList<>(); //투표
+
+    @Column(nullable = false)
+    private int votes; //투표 카운트
+
+    @JsonIgnore
     @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
     private List<Answer> answers = new ArrayList<>();
-    //멤버//
-    private int questionVoteCount; //투표수카운트
-
-    @OneToMany(mappedBy = "question")
-    private List<QuestionVote> questionVotes = new ArrayList<>(); //투표
-
 
     //답변 개수 추가
     @Transient //컬럼에서 제거되기 위해 사용
     private int answerCount;
 
+    @JsonIgnore
     @ManyToOne //회원과 질문들은 일대 다
     @JoinColumn(name = "user_id")
     private User user;
 
-    public void setUser(User user) {
-
-        this.user = user;
-        if(!this.user.getQuestions().contains(this)){
-            this.user.getQuestions().add(this);
-        }
+    //회원 닉네임 가져오기
+    public String getUserName(){
+        return user.getUserName();
     }
 
+    //회원 회원id 가져오기
+    public long getUserId(){
+        return user.getUserId();
+    }
+
+    //회원 이미지 가져오기
+    public String getImage() {
+        return user.getImage();
+    }
+
+    //질문 개수 가져오기
+    public int getAnswerCount(){
+        answerCount = answers.size();
+        return answerCount;
+    }
+
+    //투표 개수 가져오기
+    public int getVotes() {
+        votes = vote.stream()
+                .mapToInt(questionVote -> questionVote.getQuestionVoteStatus() ? 1 : -1)
+                .sum();
+        return votes;
+    }
+
+    //댓글 정보 가져오기
     public void setAnswer(Answer answer){
 
         this.answers.add(answer);
@@ -69,38 +98,26 @@ public class Question {
         }
     }
 
-    public String getDisplayName(){
-        return user.getDisplayName();
-    }
+    //유저 정보 가져오기
+    public void setUser(User user) {
 
-    public long getUserId(){
-        return user.getUserId();
-    }
-
-    public void setQuestionVotes(List<QuestionVote> questionVotes) {
-        this.questionVotes = questionVotes;
-    }
-
-    public int getAnswerCount() {
-        answerCount = answers.size();
-        return answerCount;
-    }
-
-    public int getQuestionVoteCount() {
-        questionVoteCount = questionVotes.stream()
-                .mapToInt(questionVote -> questionVote.getQuestionVoteStatus() ? 1 : -1)
-                .sum();
-        return questionVoteCount;
-    }
-
-    public void addViewCount() {
-        this.viewCount++;
-    }
-
-    public void setQuestionVote(QuestionVote questionVote) {
-        this.questionVotes.add(questionVote);
-        if(questionVote.getQuestion() != this){
-            questionVote.setQuestion(this);
+        this.user = user;
+        if(!this.user.getQuestions().contains(this)){
+            this.user.getQuestions().add(this);
         }
     }
+
+    //투표 가져오기
+    public void setVotes(QuestionVote votes) {
+        this.vote.add(votes);
+        if(votes.getQuestion() != this){
+            votes.setQuestion(this);
+        }
+    }
+
+    // 조회수 증가해서 가져오기
+    public void addViews(){
+        this.views++;
+    }
+
 }
