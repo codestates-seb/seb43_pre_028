@@ -41,6 +41,7 @@ public class AnswerService {
     }
 
     public List<Answer> findAnswers() {  // 모든 회원 조회
+
         return answerRepository.findAll();
     }
 

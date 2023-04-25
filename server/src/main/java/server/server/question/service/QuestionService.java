@@ -1,12 +1,7 @@
 package server.server.question.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import server.server.answer.entity.Answer;
 import server.server.answer.repository.AnswerRepository;
 import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
@@ -59,11 +54,12 @@ public class QuestionService {
         Optional.ofNullable(question.getTitle())
                 .ifPresent(title -> findQuestion.setTitle(title));
         //질문 문제 수정
-        Optional.ofNullable(question.getContentProblem())
-                .ifPresent(contentProblem -> findQuestion.setContentProblem(contentProblem));
-        //질문 문제 해결 수정
-        Optional.ofNullable(question.getContentTried())
-                .ifPresent(contentTried -> findQuestion.setContentTried(contentTried));
+        Optional.ofNullable(question.getProblem())
+                .ifPresent(problem -> findQuestion.setProblem(problem));
+        //질문 문제 수정
+        Optional.ofNullable(question.getTried())
+                .ifPresent(tried -> findQuestion.setTried(tried));
+
         findQuestion.setModifiedAt(LocalDateTime.now());
         return questionRepository.save(findQuestion);
     }
@@ -71,10 +67,13 @@ public class QuestionService {
     //질문 조회(1개만) - 즉 선택
     public Question findQuestion(long questionId){
 
-        return findVerifiedQuestion(questionId);
+        Question question = findVerifiedQuestion(questionId);
+        question.setViews(question.getViews() +1);
+
+        return question;
     }
 
-    //질문 조회(전채)
+    //질문 조회(전체)
 //    public Page<Question> findQuestions(int page, int size){
 //        Pageable pageable = PageRequest.of(page, size, Sort.by("questionId").descending());
 //        return questionRepository.findAll(pageable);
@@ -103,17 +102,17 @@ public class QuestionService {
                     .findFirst()    // filter 조건에 일치하는 가장 앞에 있는 요소 1를 Optional 로 리턴. 없으면 empty 리턴
                     .map(c -> {     // Optional 에 Cookie 가 있으면 꺼내서 수정
                         if (!c.getValue().contains("[" + id + "]")) {
-                            question.addViewCount();
+                            question.addViews();
                             c.setValue(c.getValue() + "[" + id + "]");
                         }
                         return c;
                     })
                     .orElseGet(() -> {
-                        question.addViewCount();
+                        question.addViews();
                         return new Cookie("postView", "[" + id + "]");
                     });
         } else {
-            question.addViewCount();
+            question.addViews();
             cookie = new Cookie("postView", "[" + id + "]");
         }
         long todayEndSecond = LocalDate.now().atTime(LocalTime.MAX).toEpochSecond(ZoneOffset.UTC);

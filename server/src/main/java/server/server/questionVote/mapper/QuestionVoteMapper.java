@@ -13,5 +13,5 @@ public interface QuestionVoteMapper {
     QuestionVote questionVotePostQuestionVote(QuestionVoteDto.PostDto postQuestionVote);
 
     @Mapping(source = "question.questionId", target = "questionId")
-    QuestionDto.Response questionVoteToResponseQuestionVote(Question question);
+    QuestionVoteDto.ResponseDto questionVoteToResponseQuestionVote(QuestionVote questionVote);
 }

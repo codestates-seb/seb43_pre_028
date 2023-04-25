@@ -34,14 +34,14 @@ public class QuestionVote extends BaseEntity {
 
     public void setQuestion(Question question) {
         this.question = question;
-        if(!this.question.getQuestionVotes().contains(this)){
-            this.question.getQuestionVotes().add(this);
+        if(!this.question.getVote().contains(this)){
+            this.question.getVote().add(this);
         }
     }
     public void setUser(User user) {
         this.user = user;
         if (!this.user.getQuestionVotes().contains(this)) {
-            this.question.getQuestionVotes().add(this);
+            this.question.getVote().add(this);
         }
     }
 }
