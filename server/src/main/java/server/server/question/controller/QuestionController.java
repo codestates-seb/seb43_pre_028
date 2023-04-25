@@ -1,15 +1,12 @@
 package server.server.question.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import server.server.answer.entity.Answer;
 import server.server.answer.mapper.AnswerMapper;
-import server.server.dto.MultiResponseDto;
 import server.server.dto.SingleResponseDto;
 import server.server.question.dto.QuestionDto;
 import server.server.question.entity.Question;
