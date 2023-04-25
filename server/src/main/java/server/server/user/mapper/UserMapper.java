@@ -13,6 +13,7 @@ public interface UserMapper {
     default User userPostDtoToUser(UserPostDto userPostDto) {
         User user = new User();
 
+        user.setUserName(userPostDto.getUserName());
         user.setEmail(userPostDto.getEmail());
         user.setPassword(userPostDto.getPassword());
 
@@ -20,7 +21,7 @@ public interface UserMapper {
     }
 
     default User userPatchDtoToUser(User user, UserPatchDto userPatchDto) {
-        user.setDisplayName(userPatchDto.getDisplayName());
+        user.setUserName(userPatchDto.getUserName());
         user.setPassword(userPatchDto.getPassword());
         user.setImage(userPatchDto.getImage());
 
@@ -31,7 +32,7 @@ public interface UserMapper {
 
         UserResponseDto userResponseDto = new UserResponseDto();
         userResponseDto.setEmail(user.getEmail());
-        userResponseDto.setDisplayName(user.getDisplayName());
+        userResponseDto.setUserName(user.getUserName());
         userResponseDto.setImage(user.getImage());
         userResponseDto.setUserStatus(user.getUserStatus());
 

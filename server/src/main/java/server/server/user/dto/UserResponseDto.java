@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class UserResponseDto {
 
-    private String displayName;
+    private String userName;
     private String email;
     private String image;
     private User.UserStatus userStatus;

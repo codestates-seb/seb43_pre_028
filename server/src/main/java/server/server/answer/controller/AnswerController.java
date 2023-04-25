@@ -22,7 +22,6 @@ import java.util.List;
 @Validated
 @Slf4j
 public class AnswerController {
-//    private final static String ANSWER_DEFAULT_URL = "/";
     private final AnswerService answerService;
     private final AnswerMapper answerMapper;
 
@@ -39,9 +38,6 @@ public class AnswerController {
         Answer response = answerService.createAnswer(answer);
 
         return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToAnswerResponse(response)), HttpStatus.CREATED);
-//        Answer response = answerService.createAnswer(answerMapper.answerPostToAnswer(questionId, postAnswer));
-//        URI location = UriCreator.createUri(ANSWER_DEFAULT_URL, response.getAnswerId());
-//        return ResponseEntity.created(location).build();
     }
 
     // 200 OK
@@ -50,7 +46,6 @@ public class AnswerController {
                                       @Valid @RequestBody AnswerDto.patchAnswer patchAnswer) {
         patchAnswer.setAnswerId(answerId);
 
-//        Answer answer = answerMapper.answerPatchToAnswer(patchAnswer);
         Answer answer = answerService.updateAnswer(answerMapper.answerPatchToAnswer(patchAnswer));
 
         return new ResponseEntity<>(new SingleResponseDto<>(answerMapper.answerToAnswerResponse(answer)), HttpStatus.OK);

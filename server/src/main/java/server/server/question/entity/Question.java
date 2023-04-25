@@ -1,10 +1,10 @@
 package server.server.question.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.answer.entity.Answer;
-import server.server.question.audit.QuestionAuditable;
 import server.server.questionVote.entity.QuestionVote;
 import server.server.user.entity.User;
 
@@ -40,19 +40,21 @@ public class Question {
     @Column(nullable = false)
     private int viewCount; //조회수 Count
 
+    @JsonIgnore
     @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
     private List<Answer> answers = new ArrayList<>();
     //멤버//
     private int questionVoteCount; //투표수카운트
 
+    @JsonIgnore
     @OneToMany(mappedBy = "question")
     private List<QuestionVote> questionVotes = new ArrayList<>(); //투표
-
 
     //답변 개수 추가
     @Transient //컬럼에서 제거되기 위해 사용
     private int answerCount;
 
+    @JsonIgnore
     @ManyToOne //회원과 질문들은 일대 다
     @JoinColumn(name = "user_id")
     private User user;
@@ -73,8 +75,12 @@ public class Question {
         }
     }
 
-    public String getDisplayName(){
-        return user.getDisplayName();
+    public String getUserName(){
+        return user.getUserName();
+    }
+
+    public String getImage(){
+        return user.getImage();
     }
 
     public long getUserId(){

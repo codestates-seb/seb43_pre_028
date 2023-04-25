@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import server.server.answer.entity.Answer;
 import server.server.answer.mapper.AnswerMapper;
 import server.server.dto.MultiResponseDto;
 import server.server.dto.SingleResponseDto;
@@ -46,7 +47,6 @@ public class QuestionController {
         Question question = mapper.postDtoToQuestion(postQuestion);
         Question createdQuestion = questionService.creteQuestion(question);
 
-
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseDto(createdQuestion)), HttpStatus.CREATED);
     }
 
@@ -80,14 +80,11 @@ public class QuestionController {
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
-    //질문 전체 조회
     @GetMapping
-    public ResponseEntity getQuestions(@Positive @RequestParam(value = "page") int page, //, defaultValue = "1"
-                                       @Positive @RequestParam(value = "size") int size) {
-        Page<Question> pageQuestions= questionService.findQuestions(page-1, size);
-        List<Question> questions = pageQuestions.getContent();
+    public ResponseEntity getQuestions() {
+        List<Question> questions = questionService.findQuestions();
 
-        return new ResponseEntity<>(new MultiResponseDto<>(mapper.questionToResponseDtos(questions), pageQuestions), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(questions), HttpStatus.OK);
     }
 
     //질문 삭제

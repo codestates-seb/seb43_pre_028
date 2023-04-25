@@ -1,5 +1,6 @@
 package server.server.questionVote.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,10 +22,12 @@ public class QuestionVote extends BaseEntity {
     @Column(nullable = false)
     private Boolean questionVoteStatus;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "QUESTION_ID") //외래키를 매핑할 때 사용
     private Question question;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;

@@ -15,6 +15,8 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class UserPostDto {
 //    private int i;
+    @NotBlank
+    private String userName;
 
     @NotBlank
     @Email

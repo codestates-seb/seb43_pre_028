@@ -1,5 +1,6 @@
 package server.server.answervote.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,10 +21,12 @@ import javax.persistence.*;
         @Column(nullable = false)
         private Boolean answerVoteStatus;  // defult == false
 
+        @JsonIgnore
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "ANSWER_ID")
         private Answer answer;
 
+        @JsonIgnore
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "USER_ID")
         private User user;

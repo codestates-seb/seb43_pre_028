@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class UserPatchDto {
     @NotBlank
-    private String displayName;
+    private String userName;
 
     @NotBlank
     private String image;

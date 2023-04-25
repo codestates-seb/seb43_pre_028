@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import server.server.answer.entity.Answer;
 import server.server.answer.repository.AnswerRepository;
 import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -73,10 +75,14 @@ public class QuestionService {
     }
 
     //질문 조회(전채)
-    public Page<Question> findQuestions(int page, int size){
-        Pageable pageable = PageRequest.of(page, size, Sort.by("questionId").descending());
-        return questionRepository.findAll(pageable);
+//    public Page<Question> findQuestions(int page, int size){
+//        Pageable pageable = PageRequest.of(page, size, Sort.by("questionId").descending());
+//        return questionRepository.findAll(pageable);
+//
+//    }
 
+    public List<Question> findQuestions() {  // 모든 회원 조회
+        return questionRepository.findAll();
     }
 
     //질문 삭제
