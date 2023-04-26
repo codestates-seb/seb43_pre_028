@@ -26,13 +26,32 @@ import { ReactComponent as Clock } from '../assets/img/clockIcon.svg';
 import { ReactComponent as Calendar } from '../assets/img/calendarIcon.svg';
 import { ReactComponent as Edit } from '../assets/img/editIcon.svg';
 import { ReactComponent as Network } from '../assets/img/networkIcon.svg';
-
+import { ReactComponent as Inbox } from '../assets/img/inbox.svg';
+import { ReactComponent as Achievement } from '../assets/img/achievement.svg';
+import { ReactComponent as Help } from '../assets/img/help.svg';
+import { ReactComponent as StackExchange } from '../assets/img/stack-exchange.svg';
 // * className 유효성 검사
 const validateClassName = className => {
   return typeof className === 'string' && className.length > 0 ? { className } : '';
 };
 
 // * 👇 모두 icon에 해당되며 StackoverFlowLogo는 sprites 이미지에서 따옴.
+export function InboxIcon({ className }) {
+  return <Inbox {...validateClassName(className)} />;
+}
+
+export function AchievementIcon({ className }) {
+  return <Achievement {...validateClassName(className)} />;
+}
+
+export function HelpIcon({ className }) {
+  return <Help {...validateClassName(className)} />;
+}
+
+export function StackExchangeIcon({ className }) {
+  return <StackExchange {...validateClassName(className)} />;
+}
+
 export function DownIcon({ className }) {
   return <Down {...validateClassName(className)} />;
 }
