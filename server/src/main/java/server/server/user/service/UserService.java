@@ -27,10 +27,12 @@ public class UserService {
     }
 
     public User getLoginUser(){ //로그인된 유저가 옳바른 지 확인하고 정보 가져옴
+
         return findUser(getUserByToken());
     }
 
     private User findUser(User user){// 아래 getUserByToken 쓸거임
+
         return findVerifiedUser(user.getUserId());
     }
 

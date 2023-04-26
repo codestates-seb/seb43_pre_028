@@ -12,7 +12,6 @@ import server.server.questionVote.entity.QuestionVote;
 
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.*;
 import javax.persistence.Id;
 

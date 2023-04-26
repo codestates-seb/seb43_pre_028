@@ -7,7 +7,7 @@ import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
 import server.server.question.entity.Question;
 import server.server.question.repository.QuestionRepository;
-import server.server.user.entity.User;
+import server.server.user.repository.UserRepository;
 import server.server.user.service.UserService;
 
 import javax.servlet.http.Cookie;
@@ -28,17 +28,19 @@ public class QuestionService {
     private AnswerRepository answerRepository;
     private UserService userService;
 
-    public QuestionService(QuestionRepository questionRepository, AnswerRepository answerRepository, UserService userService) {
+    private UserRepository userRepository;
+
+    public QuestionService(QuestionRepository questionRepository, AnswerRepository answerRepository, UserService userService, UserRepository userRepository) {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     //질문 생성
     public Question creteQuestion(Question question){
 
-        // 회원가입한 유저의 아이디를 가져와서 그 유저가 게시판을 생성해야 되는데 어떻게?
-
+        // 회원가입한 유저의 이메일을 가져오자.
 
         return questionRepository.save(question);
 
@@ -91,6 +93,7 @@ public class QuestionService {
         questionRepository.delete(findquestion);
     }
 
+    //조회수 count
     public void viewCountValidation(Question question,
                                     HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         long id = question.getQuestionId();
@@ -122,7 +125,6 @@ public class QuestionService {
         servletResponse.addCookie(cookie);
     }
 
-
     //해당 게시글이 존재하는지 체크
     public Question findVerifiedQuestion(long questionId){
         Optional<Question> question =
@@ -133,9 +135,6 @@ public class QuestionService {
         return findQuestion;
     }
 
-    private User verifyExistingUser(User user) {
 
-        return userService.findVerifiedUser(user.getUserId());
-    }
 
 }

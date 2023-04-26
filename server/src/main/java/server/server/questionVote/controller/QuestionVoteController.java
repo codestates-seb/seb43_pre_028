@@ -27,7 +27,7 @@ public class QuestionVoteController {
 
     @PostMapping("/{question-id}/question-vote")
     public ResponseEntity postQuestionVote(@PathVariable("question-id") long questionId,
-                                       @RequestBody QuestionVoteDto.PostDto postQuestionVote){
+                                           @RequestBody QuestionVoteDto.PostDto postQuestionVote){
 
         postQuestionVote.setQuestionId(questionId);
         postQuestionVote.setUserId(postQuestionVote.getUserId());

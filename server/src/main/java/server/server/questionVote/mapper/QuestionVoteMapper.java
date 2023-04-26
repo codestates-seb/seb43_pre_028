@@ -2,8 +2,6 @@ package server.server.questionVote.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import server.server.question.dto.QuestionDto;
-import server.server.question.entity.Question;
 import server.server.questionVote.dto.QuestionVoteDto;
 import server.server.questionVote.entity.QuestionVote;
 
