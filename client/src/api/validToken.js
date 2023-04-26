@@ -12,7 +12,7 @@ export const fetchLogin = createAsyncThunk('token', async () => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.data;
+  return response;
 });
 
 export default {};

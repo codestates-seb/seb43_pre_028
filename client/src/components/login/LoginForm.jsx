@@ -1,14 +1,16 @@
 import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import UserLabel from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
-import { fetchLogin } from '../../api/login';
+import { setStatus } from '../../store/loginSlice';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 function LoginForm() {
   // eslint-disable-next-line
   const EMAIL_REGEX = /[\w\-\.]+\@[\w\-\.]+/g;
-  const PW_REGEX = /^.{4,}$/;
+  const PW_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,20}$/;
 
   const [emailError, setEmailError] = useState(false);
   const [pwError, setPwError] = useState(false);
@@ -18,9 +20,6 @@ function LoginForm() {
   const navigate = useNavigate();
   const emailRef = useRef(null);
   const pwRef = useRef(null);
-  const loginState = useSelector(state => {
-    return state.login.status;
-  });
 
   const onLoginHandler = async e => {
     e.preventDefault();
@@ -29,33 +28,30 @@ function LoginForm() {
     setError('');
 
     const email = emailRef.current.value;
-    const pw = pwRef.current.value;
+    const password = pwRef.current.value;
 
     if (!EMAIL_REGEX.test(email)) {
       // console.log('email');
       setEmailError(true);
       return;
     }
-    if (!PW_REGEX.test(pw)) {
+    if (!PW_REGEX.test(password)) {
       setPwError(true);
       return;
     }
 
-    emailRef.current.value = '';
-    pwRef.current.value = '';
-
-    // ! : 매게변수 전달할 때는 괄호로 감싸서 하나의 객체로 보내야 함.
-    dispatch(fetchLogin({ email, pw }));
-    if (loginState) {
-      console.log('success');
-      // 토큰으로 유저 정보 받아오기
-      // fetch로 요청하기
-      // 메인화면으로 redirect
-      navigate('/');
-    } else {
-      // 로그인 실패
-      setError('No corresponding user information found');
-    }
+    const url = `${BASE_URL}/v1/user/login`;
+    await axios
+      .post(url, { email, password })
+      .then(() => {
+        emailRef.current.value = '';
+        pwRef.current.value = '';
+        dispatch(setStatus(true));
+        navigate('/');
+      })
+      .catch(() => {
+        setError('No corresponding user information found');
+      });
   };
   return (
     <form className="flex flex-col border-solid w-72 border-slate-300 bg-white rounded my-4 p-5 justify-between shadow-xl">
