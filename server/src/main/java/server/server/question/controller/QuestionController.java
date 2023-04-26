@@ -51,8 +51,30 @@ public class QuestionController {
         Question question = mapper.postDtoToQuestion(postQuestion);
         Question createdQuestion = questionService.creteQuestion(question);
 
-
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseDto(createdQuestion)), HttpStatus.CREATED);
+
+//        JSONObject questionJson1 = new JSONObject();
+//        JSONObject questionContentJson1 = new JSONObject();
+//        questionJson1.put("questionId", 1);
+//        questionJson1.put("title", "post Test");
+//        questionJson1.put("content", questionContentJson1);
+//        questionContentJson1.put("problem", "질문 생성이 되나?");
+//        questionContentJson1.put("tried", "진짜 되겠지?");
+//        questionJson1.put("views", 0);
+//        questionJson1.put("votes", 0);
+//        questionJson1.put("answers", 0);
+//        questionJson1.put("userName", "지현님 안뇽");
+//        questionJson1.put("userImage", "https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32");
+//        questionJson1.put("askedCount", 10);
+//        questionJson1.put("createdAt", "have to compute");
+//        questionJson1.put("modifiedAt", "2023-04-21T00:43:02.9797101");
+//
+//        ArrayList<JSONObject> questionJson = new ArrayList<>();
+//
+//        questionJson.add(questionJson1);
+//
+//        return new ResponseEntity<>((questionJson), HttpStatus.OK);
+
     }
 
     //질문 수정
@@ -123,12 +145,12 @@ public class QuestionController {
         questionJson2.put("questionId", 2);
         questionJson2.put("title", "Why is the page refreshed after javascript post request?");
         questionJson2.put("content", questionContentJson2);
-        questionContentJson2.put("problem", "");
-        questionContentJson2.put("tried", "");
-        questionJson2.put("views", 0);
-        questionJson2.put("votes", 0);
-        questionJson2.put("answers", 0);
-        questionJson2.put("userName", "눈물 주루룩");
+        questionContentJson2.put("problem", "진짜 큰일 났다.");
+        questionContentJson2.put("tried", "성공은 해야 하는데...");
+        questionJson2.put("views", 5);
+        questionJson2.put("votes", 6);
+        questionJson2.put("answers", 8);
+        questionJson2.put("userName", "기정님있어요!!");
         questionJson2.put("userImage", "https://www.gravatar.com/avatar/1b375c795476432e64d4433a651d2804?s=32&d=identicon&r=PG");
         questionJson2.put("askedCount", 382);
         questionJson2.put("createdAt", "2023-04-26 05:18:11");
@@ -184,19 +206,19 @@ public class QuestionController {
 
         JSONObject questionJson6 = new JSONObject();
         JSONObject questionContentJson6 = new JSONObject();
-        questionJson3.put("questionId", 6);
-        questionJson3.put("title", "AWS Amplify Pub/Sub entering disconnect state without any other logs");
-        questionJson3.put("content", questionContentJson6);
-        questionContentJson3.put("problem", "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.");
-        questionContentJson3.put("tried", "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it.");
-        questionJson3.put("views", 4);
-        questionJson3.put("votes", 1);
-        questionJson3.put("answers", 2);
-        questionJson3.put("userName", "기정님");
-        questionJson3.put("userImage", "https://picsum.photos/200/300/?blur");
-        questionJson3.put("askedCount", 5);
-        questionJson3.put("createdAt", "have to compute");
-        questionJson3.put("modifiedAt", "2023-03-26T00:43:02.9797101");
+        questionJson6.put("questionId", 6);
+        questionJson6.put("title", "AWS Amplify Pub/Sub entering disconnect state without any other logs");
+        questionJson6.put("content", questionContentJson6);
+        questionContentJson6.put("problem", "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.");
+        questionContentJson6.put("tried", "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it.");
+        questionJson6.put("views", 4);
+        questionJson6.put("votes", 1);
+        questionJson6.put("answers", 2);
+        questionJson6.put("userName", "기정님");
+        questionJson6.put("userImage", "https://picsum.photos/200/300/?blur");
+        questionJson6.put("askedCount", 5);
+        questionJson6.put("createdAt", "have to compute");
+        questionJson6.put("modifiedAt", "2023-03-26T00:43:02.9797101");
 
         JSONObject questionJson7 = new JSONObject();
         JSONObject questionContentJson7 = new JSONObject();
@@ -330,7 +352,7 @@ public class QuestionController {
         JSONObject questionContentJson15 = new JSONObject();
         questionJson15.put("questionId", 15);
         questionJson15.put("title", "AWS Amplify Pub/Sub entering disconnect state without any other logs");
-        questionJson15.put("content", questionContentJson3);
+        questionJson15.put("content", questionContentJson15);
         questionContentJson3.put("problem", "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.");
         questionContentJson3.put("tried", "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it.");
         questionJson15.put("views", 4);
@@ -344,19 +366,19 @@ public class QuestionController {
 
         JSONObject questionJson16 = new JSONObject();
         JSONObject questionContentJson16 = new JSONObject();
-        questionJson3.put("questionId", 16);
-        questionJson3.put("title", "AWS Amplify Pub/Sub entering disconnect state without any other logs");
-        questionJson3.put("content", questionContentJson16);
-        questionContentJson3.put("problem", "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.");
-        questionContentJson3.put("tried", "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it.");
-        questionJson3.put("views", 4);
-        questionJson3.put("votes", 1);
-        questionJson3.put("answers", 2);
-        questionJson3.put("userName", "살려주세요");
-        questionJson3.put("userImage", "https://i.pravatar.cc");
-        questionJson3.put("askedCount", 5);
-        questionJson3.put("createdAt", "have to compute");
-        questionJson3.put("modifiedAt", "2023-03-26T00:43:02.9797101");
+        questionJson16.put("questionId", 16);
+        questionJson16.put("title", "AWS Amplify Pub/Sub entering disconnect state without any other logs");
+        questionJson16.put("content", questionContentJson16);
+        questionContentJson16.put("problem", "I have been working in both Python and Rust for quite a while now, and have started to get irritated about python’s lack of a proper default __repr__.");
+        questionContentJson16.put("tried", "This isn't perfect (I deliberately printed an empty string and inheritance is funky too), but it does the job for me. I understand that, by adding a bunch more if-statements, I can probably get this pretty (and, if there is interest, I'd have the free time to do that and turn it into a small python package), but that is not the point. I feel like this should exist already, and I simply cannot find it.");
+        questionJson16.put("views", 4);
+        questionJson16.put("votes", 1);
+        questionJson16.put("answers", 2);
+        questionJson16.put("userName", "살려주세요");
+        questionJson16.put("userImage", "https://i.pravatar.cc");
+        questionJson16.put("askedCount", 5);
+        questionJson16.put("createdAt", "have to compute");
+        questionJson16.put("modifiedAt", "2023-03-26T00:43:02.9797101");
 
         JSONObject questionJson17 = new JSONObject();
         JSONObject questionContentJson17 = new JSONObject();
