@@ -4,6 +4,7 @@ import FadeLoader from 'react-spinners/FadeLoader';
 
 import ContentItem from './ContentItem';
 import { fetchAllQuestions } from '../../api/question';
+import Pagination from '../ui/Pagination';
 
 function Content() {
   const { status, questions } = useSelector(state => state.question);
@@ -24,6 +25,7 @@ function Content() {
         questions.map(question => (
           <ContentItem key={question.questionId} {...question} />
         ))}
+      <Pagination />
     </div>
   );
 }
