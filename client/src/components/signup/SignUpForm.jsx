@@ -1,27 +1,24 @@
 import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import UserInput from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
-import { fetchSignUP } from '../../api/signup';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 function SignUpForm() {
   // eslint-disable-next-line
   const EMAIL_REGEX = /[\w\-\.]+\@[\w\-\.]+/g;
-  const PW_REGEX = /^.{4,}$/;
+  const PW_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,20}$/;
 
   const [emailError, setEmailError] = useState(false);
   const [pwError, setPwError] = useState(false);
   const [error, setError] = useState('');
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const pwRef = useRef(null);
-  const signupState = useSelector(state => {
-    return state.signup.state;
-  });
+
   const onSignUpHandler = async e => {
     e.preventDefault();
 
@@ -31,31 +28,29 @@ function SignUpForm() {
 
     const name = nameRef.current.value;
     const email = emailRef.current.value;
-    const pw = pwRef.current.value;
+    const password = pwRef.current.value;
 
     if (!EMAIL_REGEX.test(email)) {
-      // console.log('email');
       setEmailError(true);
       return;
     }
-    if (!PW_REGEX.test(pw)) {
+    if (!PW_REGEX.test(password)) {
       setPwError(true);
       return;
     }
 
-    nameRef.current.value = '';
-    emailRef.current.value = '';
-    pwRef.current.value = '';
-
-    dispatch(fetchSignUP({ name, email, pw }));
-
-    if (signupState) {
-      navigate('/user/login');
-    } else {
-      // 에러 표시 하기
-      // console.log('error!!');
-      setError('An error has occurred');
-    }
+    const url = `${BASE_URL}/v1/sign-up`;
+    await axios
+      .post(url, { userName: name, email, password })
+      .then(() => {
+        nameRef.current.value = '';
+        emailRef.current.value = '';
+        pwRef.current.value = '';
+        navigate('/user/login');
+      })
+      .catch(() => {
+        setError('An error has occurred');
+      });
   };
   return (
     <form className="flex flex-col h-auto border-solid w-72 border-slate-300 bg-white rounded my-4 p-5 justify-between shadow-xl">
