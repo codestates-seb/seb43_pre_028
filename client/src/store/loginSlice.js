@@ -1,43 +1,30 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchLogin } from '../api/login';
 
-export const loginAPI = createAsyncThunk('login', async ({ email, pw, BASE_URL }) => {
-  const loginRes = await fetch(`${BASE_URL}/user`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      credentials: true,
-    },
-    body: JSON.stringify({ email, pw }),
-  }).then(res => res.json());
-  // .then(data => console.log(data));
-  return loginRes;
-});
-
+// * : email, pw 등의 정보는 여기 저장하지 않고 로그인 유무만 다루는 것에 대해서.
 const loginSlice = createSlice({
   name: 'loginSlice',
-  initialState: { email: '', pw: '', token: '', state: '' },
+  initialState: { status: false },
   reducers: {
-    setEmail: (state, action) => {
-      state.email = action.payload.email;
-    },
-    setPW: (state, action) => {
-      state.pw = action.payload.pw;
+    setStatus: (state, action) => {
+      state.status = action.payload;
     },
   },
   extraReducers: builder => {
-    builder.addCase(loginAPI.pending, (state, action) => {
+    builder.addCase(fetchLogin.pending, (state, action) => {
       // 대기 상태일 때
     });
-    builder.addCase(loginAPI.fulfilled, (state, action) => {
-      state.token = action.payload;
-      state.state = 'success';
+    builder.addCase(fetchLogin.fulfilled, (state, action) => {
+      sessionStorage.setItem('token', state.token);
+      state.status = true;
     });
-    builder.addCase(loginAPI.rejected, (state, action) => {
-      // state.token = '';
-      // state.state = 'fail';
+    builder.addCase(fetchLogin.rejected, (state, action) => {
+      state.status = false;
     });
   },
 });
 
+// 201 'create'
+
 export default loginSlice;
-export const { setEmail, setPW } = loginSlice.actions;
+export const { setStatus } = loginSlice.actions;
