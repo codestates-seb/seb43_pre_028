@@ -18,7 +18,7 @@ public class CorsConfig {
 
         config.setAllowCredentials(true); //내 서버 응답 할때 제이슨을 자바스크립트에서 처리할 수 있게 할지 결정
 //            config.addAllowedOriginPattern("*");// 모든 ip 응답 허용
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://prepro28.s3-website.ap-northeast-2.amazonaws.com "));
+        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001", "https://prepro28.s3-website.ap-northeast-2.amazonaws.com"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
         config.addExposedHeader("Authorization");
