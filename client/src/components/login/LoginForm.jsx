@@ -43,11 +43,19 @@ function LoginForm() {
     const url = `${BASE_URL}/v1/user/login`;
     await axios
       .post(url, { email, password })
-      .then(() => {
-        emailRef.current.value = '';
-        pwRef.current.value = '';
-        dispatch(setStatus(true));
-        navigate('/');
+      .then(res => {
+        if (res.data.length > 0) {
+          emailRef.current.value = '';
+          pwRef.current.value = '';
+
+          sessionStorage.setItem('token', res.data);
+          // 토큰을 받아서 유저 데이터를 받아오는 요청
+
+          dispatch(setStatus(true));
+          navigate('/');
+        } else {
+          setError('No corresponding user information found');
+        }
       })
       .catch(() => {
         setError('No corresponding user information found');
