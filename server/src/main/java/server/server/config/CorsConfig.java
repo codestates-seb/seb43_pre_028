@@ -23,5 +23,20 @@ public class CorsConfig {
 
             return new CorsFilter(source);
 
+//            configuration.addAllowedOriginPattern("");
+//            configuration.addAllowedOrigin("http://localhost:3000");
+//            configuration.addAllowedOrigin("http://localhost:8080");
+//            configuration.addAllowedOrigin("http://pre-project43.s3-website.ap-northeast-2.amazonaws.com/%22);
+//                    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
+//            configuration.setAllowedHeaders(Arrays.asList(""));
+//            configuration.setAllowCredentials(true);
+//            configuration.addAllowedHeader("");
+//            configuration.addExposedHeader("");
+//
+//            configuration.validateAllowCredentials();
+//            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//            source.registerCorsConfiguration("/**", configuration);
+//            return source;
         }
-}
+
+        }

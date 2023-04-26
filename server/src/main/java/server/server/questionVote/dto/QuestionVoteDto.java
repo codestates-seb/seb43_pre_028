@@ -51,4 +51,5 @@ public class QuestionVoteDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
     }
+
 }

@@ -21,9 +21,6 @@ public class QuestionDto {
     public static class Post{
         @NotBlank(message = "제목을 입력해주세요.")
         private String title;
-//        @NotBlank(message = "내용을 입력해주세요.")
-//        private Map<String, String> content = new HashMap<>();
-
         @NotBlank(message = "문제점을 입력해주세요.")
         private String problem;
         @NotBlank(message = "해결했던 방안을 입력해주세요.")
@@ -38,12 +35,6 @@ public class QuestionDto {
 
             return user;
         }
-//        public void setContent(String problem, String tried) {
-//            content.put("problem", problem);
-//            content.put("tried", tried);
-//            this.content = content;
-//        }
-
     }
 
     @Getter
@@ -52,19 +43,12 @@ public class QuestionDto {
     public static class Patch{
         private long questionId;
         private String title;
-//        private Map<String, String> content = new HashMap<>();
         private String problem;
         private String tried;
 
         public void setQuestionId(long questionId) {
             this.questionId = questionId;
         }
-
-//        public void setContent(String problem, String tried) {
-//            content.put("problem", problem);
-//            content.put("tried", tried);
-//            this.content = content;
-//        }
     }
 
     @Getter
@@ -75,7 +59,6 @@ public class QuestionDto {
         private  long userId;
         private long questionId;
         private String title;
-//        private Map<String, String> content = new HashMap<>();
         private String problem;
         private String tried;
         private int views;

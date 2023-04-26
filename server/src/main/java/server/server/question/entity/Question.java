@@ -48,12 +48,12 @@ public class Question {
     private int votes; //투표 카운트
 
     @JsonIgnore
-    @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다
-    private List<Answer> answers = new ArrayList<>();
+    @OneToMany(mappedBy = "question") // 질문글과 답글은 일대 다 질문
+    private List<Answer> answer = new ArrayList<>();
 
     //답변 개수 추가
-    @Transient //컬럼에서 제거되기 위해 사용
-    private int answerCount;
+    @Column(nullable = false)
+    private int answers;
 
     @JsonIgnore
     @ManyToOne //회원과 질문들은 일대 다
@@ -75,12 +75,6 @@ public class Question {
         return user.getImage();
     }
 
-    //질문 개수 가져오기
-    public int getAnswerCount(){
-        answerCount = answers.size();
-        return answerCount;
-    }
-
     //투표 개수 가져오기
     public int getVotes() {
         votes = vote.stream()
@@ -89,10 +83,16 @@ public class Question {
         return votes;
     }
 
+    //질문 개수 가져오기
+    public int getAnswers(){
+        answers = answer.size();
+        return answers;
+    }
+
     //댓글 정보 가져오기
     public void setAnswer(Answer answer){
 
-        this.answers.add(answer);
+        this.answer.add(answer);
         if(answer.getQuestion() != this){
             answer.setQuestion(this);
         }
@@ -114,6 +114,8 @@ public class Question {
             votes.setQuestion(this);
         }
     }
+
+
 
     // 조회수 증가해서 가져오기
     public void addViews(){
