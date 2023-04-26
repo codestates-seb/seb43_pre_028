@@ -5,6 +5,7 @@ import axios from 'axios';
 import UserLabel from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
 import { setStatus } from '../../store/loginSlice';
+import { fetchUser } from '../../api/user';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 function LoginForm() {
@@ -48,10 +49,13 @@ function LoginForm() {
           emailRef.current.value = '';
           pwRef.current.value = '';
 
+          // * : res로 받아온 데이터(토큰) sessionStorage에 저장
           sessionStorage.setItem('token', res.data);
-          // 토큰을 받아서 유저 데이터를 받아오는 요청
-
+          // * : login 여부 수정 코드
           dispatch(setStatus(true));
+          // * : 토큰을 받아서 유저 데이터를 받아오는 요청(userSlice에 유저 정보 저장)
+          dispatch(fetchUser());
+
           navigate('/');
         } else {
           setError('No corresponding user information found');
