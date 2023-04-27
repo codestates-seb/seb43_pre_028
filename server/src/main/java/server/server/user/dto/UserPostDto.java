@@ -14,7 +14,6 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserPostDto {
-//    private int i;
     @NotBlank
     private String userName;
 

@@ -16,13 +16,11 @@ import server.server.question.entity.Question;
 import server.server.question.mapper.QuestionMapper;
 import server.server.question.service.QuestionService;
 import server.server.user.service.UserService;
-import server.server.utils.UriCreator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,12 +83,8 @@ public class QuestionController {
         patchQuestion.setQuestionId(questionId);
 
         Question question = questionService.updateQuestion(mapper.patchDtoToQuestion(patchQuestion));
-        QuestionDto.Response response = mapper.questionToResponseDto(question);
 
-        URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, question.getQuestionId());
-
-        //return ResponseEntity.status(HttpStatus.OK).location(location).body(response);
-        return new ResponseEntity<>(new SingleResponseDto<>(location), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.questionToResponseDto(question)), HttpStatus.OK);
     }
 
     //질문 조회 시 질문 조회수를 처리

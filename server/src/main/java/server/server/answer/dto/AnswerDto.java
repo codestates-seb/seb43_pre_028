@@ -56,5 +56,7 @@ public class AnswerDto {
         private Boolean choose;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
+        private String image;
+        private String name;
     }
 }

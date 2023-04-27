@@ -63,7 +63,7 @@ public class AnswerController {
 //    }
 
     @GetMapping("answers")
-    public ResponseEntity getAnswer(){
+    public ResponseEntity getAnswer() {
 
         JSONObject answerJson1 = new JSONObject();
         answerJson1.put("answerId", 1);

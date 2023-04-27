@@ -8,8 +8,7 @@ import server.server.answer.repository.AnswerRepository;
 import org.springframework.transaction.annotation.Transactional;
 import server.server.exception.BusinessLogicException;
 import server.server.exception.ExceptionCode;
-import server.server.question.service.QuestionService;
-import server.server.user.service.UserService;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -40,12 +39,12 @@ public class AnswerService {
         return answerRepository.save(findAnswer);
     }
 
-    public List<Answer> findAnswers() {  // 모든 회원 조회
+    public List<Answer> findAnswers() {  // 모든 답변 조회
 
         return answerRepository.findAll();
     }
 
-    public void deleteAnswer(long answerId) {  // 특정 회원 삭제
+    public void deleteAnswer(long answerId) {  // 특정 답변 삭제
         answerRepository.deleteById(answerId);
     }
 
