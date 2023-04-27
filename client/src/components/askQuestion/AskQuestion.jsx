@@ -20,16 +20,22 @@ function AskQuestion() {
       title,
       problem,
       tried,
+      userId: 1,
     };
 
     const url = `${BASE_URL}/questions/new`;
 
-    try {
-      const response = await axios.post(url, data);
-      if (response && response.status >= 200 && response.status < 300) navigate('/');
-    } catch (error) {
-      return <ErrorPage />;
-    }
+    const response = await axios.post(url, data).catch(() => {
+      console.log('Error');
+    });
+    console.log(response);
+    navigate('/');
+
+    // try {
+    //   if (response && response.status >= 200 && response.status < 300) navigate('/');
+    // } catch (error) {
+    //   return <ErrorPage />;
+    // }
   };
 
   return (
