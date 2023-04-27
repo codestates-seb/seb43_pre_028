@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = 'http://ec2-3-39-212-111.ap-northeast-2.compute.amazonaws.com:8080';
 
 export const fetchQuestion = createAsyncThunk('question/fetchQuestion', async id => {
-  const url = `https://6eba420e-68d0-40ee-8655-1b6266b1c756.mock.pstmn.io/questions/${id}`;
+  // const url = `${BASE_URL}/answers/${id}`;
+  const url = `${BASE_URL}/answers/`;
   const response = await axios.get(url);
   return response.data;
 });

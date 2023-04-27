@@ -29,7 +29,22 @@ function ContentItem({
         </div>
       </div>
       <div className="w-full">
-        <Link to={`/questions/${questionId}`}>
+        <Link
+          to={`/questions/${questionId}`}
+          state={{
+            questionId,
+            title,
+            content,
+            views,
+            votes,
+            answers,
+            userName,
+            userImage,
+            askedCount,
+            createAt,
+            modifiedAt,
+          }}
+        >
           <h3 className="text-[17px] text-[#0374cc] mb-1">{title}</h3>
         </Link>
         <p className="h-[34px] mb-2 overflow-auto">

@@ -5,7 +5,7 @@ import User from '../asset/User';
 // 질문이 생성된 날짜, 수정된 날짜, 조회수를 렌더링하는 컴포넌트
 function Days({ data }) {
   const today = new Date(); // 오늘 날짜
-  const created = new Date(data.createdAt); // 질문 생성 날짜
+  const created = new Date(data.createAt); // 질문 생성 날짜
   const modified = new Date(data.modifiedAt); // 질문 수정 날짜
 
   // 각 날짜의 차이를 일 수로 계산
@@ -42,7 +42,7 @@ function Question({ data }) {
           <Voting data={data} />
         </div>
         <div className="break-all">
-          {data.content}
+          {`${data.content.problem}\n${data.content.tried}`}
           <div className="flex mt-10 justify-between">
             <EditDelete className="mr-2" />
             <User data={data} />

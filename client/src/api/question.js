@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = 'http://ec2-3-39-212-111.ap-northeast-2.compute.amazonaws.com:8080';
 // const BASE_URL = process.env.REACT_APP_BASE_URL;
 console.log(BASE_URL);
 // const BASE_URL = 'http://localhost:4000';

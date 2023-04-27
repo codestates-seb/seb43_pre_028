@@ -1,6 +1,7 @@
 // questionDetailSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchQuestion } from '../api/questionDetail';
+import question from '../api/question';
 
 const initialState = {
   status: 'loading',
@@ -25,6 +26,7 @@ const questionDetailSlice = createSlice({
     builder.addCase(fetchQuestion.fulfilled, (state, action) => {
       state.status = 'succeed';
       state.question = action.payload;
+      console.log(question);
     });
     builder.addCase(fetchQuestion.rejected, (state, action) => {
       state.status = 'failed';
