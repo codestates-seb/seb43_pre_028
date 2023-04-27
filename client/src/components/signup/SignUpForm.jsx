@@ -70,14 +70,14 @@ function SignUpForm() {
         inputRef={pwRef}
         inputId="password"
         className="w-60 h-8 mt-1"
-        errorMsg="Please write your password in at least 4 letters."
+        errorMsg="Please write 8 to 20 characters including upper case, lower case, special character, and number."
         state={pwError}
       >
         <p className="flex justify-between items-end w-60">Password</p>
       </UserInput>
       <p className="text-xs font-light">
-        Passwords must contain at least eight characters, including at least 1 letter and
-        1 number.
+        Please write 8 to 20 characters including upper case, lower case, special
+        character, and number.
       </p>
       <p className="mt-8 font-light text-xs text-red-600 text-center">{error}</p>
       <ButtonCard

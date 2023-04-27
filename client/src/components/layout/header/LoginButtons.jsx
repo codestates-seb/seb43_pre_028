@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AchievementIcon, HelpIcon, InboxIcon, StackExchangeIcon } from '../../Icons';
 
@@ -30,11 +31,13 @@ function AfterLogin() {
   return (
     <div className="flex">
       <div className="flex items-center justify-between gap-4">
-        <img
-          src="https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32"
-          alt="user-avartar"
-          className="ml-4 mr-4 rounded-md h-[30px] w-[30px]"
-        />
+        <Link to="/user">
+          <img
+            src="https://lh3.googleusercontent.com/a/AGNmyxZ3yZ7RupMJPJCP_NwE0ngixsfdYY3OmIqScQmx=k-s32"
+            alt="user-avartar"
+            className="ml-4 mr-4 rounded-md h-[30px] w-[30px]"
+          />
+        </Link>
         <InboxIcon className="fill-[#525960] h-[28px] w-[28px]" />
         <AchievementIcon className="fill-[#525960] h-[28px] w-[28px]" />
         <HelpIcon className="fill-[#525960] h-[28px] w-[28px]" />
@@ -45,7 +48,9 @@ function AfterLogin() {
 }
 
 function LoginButtons() {
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(false);
+  // * : 로그인 유무 판단
+  const isLogin = useSelector(state => state.login.status);
 
   return (
     <>

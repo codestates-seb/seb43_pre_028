@@ -1,11 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import ButtonCard from '../ui/ButtonCard';
 import PublicInfoEdit from './PublicInfoEdit';
 import LinksEdit from './LinksEdit';
 import PrivateInfoEdit from './PrivateInfoEdit';
 
 function UserEditForm() {
+  const navigate = useNavigate();
   const onSubmitHandler = async e => {
     e.preventDefault();
+    navigate('/');
   };
   return (
     <form>
@@ -16,7 +19,10 @@ function UserEditForm() {
       <LinksEdit />
       <PrivateInfoEdit />
       <div className="flex itmes-center">
-        <ButtonCard className="px-3 h-10 bg-[#1e95ff] hover:bg-[#0074CC] text-white my-8">
+        <ButtonCard
+          className="px-3 h-10 bg-[#1e95ff] hover:bg-[#0074CC] text-white my-8"
+          onClickHandler={onSubmitHandler}
+        >
           Save profile
         </ButtonCard>
         <ButtonCard
