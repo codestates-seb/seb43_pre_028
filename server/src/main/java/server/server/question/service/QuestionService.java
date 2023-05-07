@@ -75,13 +75,6 @@ public class QuestionService {
         return question;
     }
 
-    //질문 조회(전체)
-//    public Page<Question> findQuestions(int page, int size){
-//        Pageable pageable = PageRequest.of(page, size, Sort.by("questionId").descending());
-//        return questionRepository.findAll(pageable);
-//
-//    }
-
     public List<Question> findQuestions() {  // 모든 회원 조회
         return questionRepository.findAll();
     }

@@ -115,8 +115,6 @@ public class Question {
         }
     }
 
-
-
     // 조회수 증가해서 가져오기
     public void addViews(){
         this.views++;

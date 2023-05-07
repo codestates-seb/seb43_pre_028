@@ -1,12 +1,9 @@
 package server.server.user.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server.server.user.entity.User;
-
-import javax.validation.constraints.NotBlank;
 
 
 @Getter
