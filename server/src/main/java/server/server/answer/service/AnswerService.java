@@ -1,18 +1,17 @@
 package server.server.answer.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import server.server.answer.entity.Answer;
-import server.server.answer.exception.BusinessLogicException;
-import server.server.answer.exception.ExceptionCode;
 import server.server.answer.repository.AnswerRepository;
 
 import org.springframework.transaction.annotation.Transactional;
+import server.server.exception.BusinessLogicException;
+import server.server.exception.ExceptionCode;
+
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -33,35 +32,26 @@ public class AnswerService {
         Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
 
         Optional.ofNullable(answer.getContent())
-                .ifPresent(findAnswer::setContent);
+                .ifPresent(content -> findAnswer.setContent(content));
 
         findAnswer.setModifiedAt(LocalDateTime.now());
 
         return answerRepository.save(findAnswer);
     }
 
-    public Answer findAnswer(long answerId) {  // 특정 회원 조회
+    public List<Answer> findAnswers() {  // 모든 답변 조회
 
-        return findVerifiedAnswer(answerId);
+        return answerRepository.findAll();
     }
 
-    public Page<Answer> findAnswers(int page, int size) {  // 모든 회원 조회
-        return answerRepository.findAll(PageRequest.of(page, size,
-                Sort.by("answerId").descending()));
-    }
-
-    public void deleteAnswer(long answerId) {  // 특정 회원 삭제
-        Answer findAnswer = findVerifiedAnswer(answerId);
-
-        answerRepository.delete(findAnswer);
+    public void deleteAnswer(long answerId) {  // 특정 답변 삭제
+        answerRepository.deleteById(answerId);
     }
 
     public Answer findVerifiedAnswer(long answerId) {  // 해당 답변글의 존재 유무 체크
-        Optional<Answer> optionalAnswer =
-                answerRepository.findByContent(String.valueOf(answerId));
-        Answer findAnswer =
-                optionalAnswer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
+        Answer answer = answerRepository.findByAnswerId(answerId)
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
 
-        return findAnswer;
+        return answer;
     }
 }
