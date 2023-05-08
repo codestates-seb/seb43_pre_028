@@ -1,32 +1,41 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import WritingGuide from './WritingGuide';
 import TitleInput from './TitleInput';
 import ProblemInput from './ProblemInput';
 import TriedInput from './TriedInput';
 import { QuestionBGImg } from '../Icons';
+import ErrorPage from '../../pages/ErrorPage';
 
 function AskQuestion() {
   const [title, setTitle] = useState('');
   const [problem, setProblem] = useState('');
   const [tried, setTried] = useState('');
-
-  // TODO : toolkit 적용 방식
-  // TODO : 유저정보 어떻게 받아올지
+  const navigate = useNavigate();
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const onClickHandler = async () => {
     const data = {
       title,
       problem,
       tried,
-      // id:UserId
+      userId: 1,
     };
-    await fetch('주소', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(response => response.json());
+
+    const url = `${BASE_URL}/questions/new`;
+
+    const response = await axios.post(url, data).catch(() => {
+      console.log('Error');
+    });
+    console.log(response);
+    navigate('/');
+
+    // try {
+    //   if (response && response.status >= 200 && response.status < 300) navigate('/');
+    // } catch (error) {
+    //   return <ErrorPage />;
+    // }
   };
 
   return (

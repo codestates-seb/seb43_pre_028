@@ -2,8 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-export const validToken = createAsyncThunk('token', async () => {
-  const url = `${BASE_URL}/v1/token`;
+// * : 토큰을 사용해서 유저 정보를 받아오는 api
+export const fetchUser = createAsyncThunk('users', async () => {
+  const url = `${BASE_URL}/user`;
   const token = sessionStorage.getItem('token');
   const response = await axios.get(url, {
     headers: {
@@ -12,7 +13,7 @@ export const validToken = createAsyncThunk('token', async () => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response;
+  return response.data;
 });
 
 export default {};

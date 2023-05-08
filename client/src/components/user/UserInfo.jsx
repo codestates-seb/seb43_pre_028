@@ -1,7 +1,17 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { BirthIcon, CalendarIcon, ClockIcon, EditIcon, NetworkIcon } from '../Icons';
 import ButtonCard from '../ui/ButtonCard';
+import { setStatus } from '../../store/loginSlice';
 
 function UserInfo() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onLogoutHandler = () => {
+    sessionStorage.clear();
+    dispatch(setStatus(false));
+    navigate('/');
+  };
   return (
     <div className="flex items-center relative">
       <img
@@ -33,6 +43,13 @@ function UserInfo() {
           <ButtonCard className="p-2 hover:bg-slate-50 border-slate-300 mx-2 text-slate-500">
             <NetworkIcon className="mr-1" />
             Network Profile
+          </ButtonCard>
+          {/* 임의로 작성한 로그아웃 버튼 */}
+          <ButtonCard
+            className="p-2 hover:bg-slate-50 border-slate-300 mx-2 text-slate-500"
+            onClickHandler={onLogoutHandler}
+          >
+            Logout
           </ButtonCard>
         </div>
       </div>

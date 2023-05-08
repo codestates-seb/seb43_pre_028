@@ -5,6 +5,7 @@ import axios from 'axios';
 import UserLabel from '../ui/UserLabel';
 import ButtonCard from '../ui/ButtonCard';
 import { setStatus } from '../../store/loginSlice';
+import { fetchUser } from '../../api/user';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 function LoginForm() {
@@ -40,14 +41,30 @@ function LoginForm() {
       return;
     }
 
+    // ! : 서버에서 데이터를 받아올 수 있게 되기 전까지 사용하는 임시 코드
+    dispatch(setStatus(true));
+    navigate('/');
+    // ! : 유효성 검사 후 바로 로그인 상태로 변경(서버통신X)
+
     const url = `${BASE_URL}/v1/user/login`;
     await axios
       .post(url, { email, password })
-      .then(() => {
-        emailRef.current.value = '';
-        pwRef.current.value = '';
-        dispatch(setStatus(true));
-        navigate('/');
+      .then(res => {
+        if (res.data.length > 0) {
+          emailRef.current.value = '';
+          pwRef.current.value = '';
+
+          // * : res로 받아온 데이터(토큰) sessionStorage에 저장
+          sessionStorage.setItem('token', res.data);
+          // * : login 여부 수정 코드
+          dispatch(setStatus(true));
+          // * : 토큰을 받아서 유저 데이터를 받아오는 요청(userSlice에 유저 정보 저장)
+          dispatch(fetchUser());
+
+          navigate('/');
+        } else {
+          setError('No corresponding user information found');
+        }
       })
       .catch(() => {
         setError('No corresponding user information found');
@@ -65,7 +82,7 @@ function LoginForm() {
         Email
       </UserLabel>
       <UserLabel
-        errorMsg="Password cannot be empty."
+        errorMsg="Please write 8 to 20 characters including upper case, lower case, special character, and number."
         inputId="password"
         className="w-60 h-8 mt-1"
         inputRef={pwRef}
