@@ -16,10 +16,6 @@
 
 ### 🔗 프리뷰 사이트
 
-<br /><br />
-<a href='http://prepro28.s3-website.ap-northeast-2.amazonaws.com/'>링크</a>
-<br /><br />
-
 ### 🎨 서비스 미리보기
 
 ![미리보기](https://user-images.githubusercontent.com/92746200/234821125-b0471cc4-c268-4e08-8021-b7027371f7c6.gif)
